@@ -1,26 +1,56 @@
 <?php
+include'class/user.php';
+session_start();
+if(!isset($_SESSION['user']))
+{
+ header('location:login.php');
+}
+$user_id=$_SESSION['user'];
+$user = new USER();
 
-    include_once("bootstrap.php");
+//fetch user details
+$result=$user->user_detail($user_id);
 
-    session_start();
+?>
 
-    
-
-?><!DOCTYPE html>
-<html lang="en">
-
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Brandish</title>
-    <link rel="stylesheet" href="styles/style.css">
+	<title></title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
+    <script type="text/javascript" src="function.js"></script>
+    <script src="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
+
+	<style>
+		.container{
+			background-color: red;
+			width: 416px;
+			height: 896px;
+			border: 10px solid white;
+			box-shadow: 0px 0px 10px grey;
+			margin: 0px auto;
+			border-radius: 10px;
+		}
+
+	</style>
+
 </head>
-
 <body>
-    <header>
-        <?php include('nav.php');?>
-    </header>
-</body>
+<div class="container">
+	<div class="header">
+		<a href="Logout.php">Logout</a>
+		<a href="">Hi <?php echo($result['username']); ?></a>
+	</div>
+	
+	<div id="user_details"></div>
+	<div id="user_model_details"></div>
+</div>
 
+</body>
 </html>

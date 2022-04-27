@@ -1,66 +1,61 @@
 <?php
-//insert code here
-if (!empty($_POST)) {
-    try{ 
-        $email = $_POST["email"];
-        $password = $_POST["password"];
+require_once 'class/user.php';
+session_start();
+$msg='';
+if(isset($_SESSION['user']))
+{
+ header('location:index.php');
+}
+$user = new user();
 
-        include_once(__DIR__ . "/classes/User.php");
+if(isset($_POST['submit'])){
 
-        $user = new User();
-        $user->setEmail($email);
-        $user->setPassword($password);
-        if ($user->canLogin($email, $password)) {
-            session_start();
-            $_SESSION["user"] = $email;
-            header("Location: index.php");
-        }
-    }
-    catch(Throwable $error) {
-        $error = $error->getMessage();
-    }
+	$username=$_POST['username'];
+	$password=$_POST['password'];
+
+	$logincheck = $user->login_check($username,$password);
+
+	if($logincheck){
+		$user->insert_login_details($logincheck);
+		header('location:index.php');
+	}
+	else{
+		$msg="Wrong Credinatials";
+	}
+
 }
 
-?><!DOCTYPE html>
-<html lang="en">
 
+?>
+
+<!DOCTYPE html>
+<html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Creative Minds</title>
-    <link rel="stylesheet" href="styles/style.css">
+	<title>Chat Message</title>
+	<style type="text/css">
+		input[type="text"],input[type="password"]{
+			padding: 6px 14px 6px 14px;
+			width: 51%;
+			margin: 15px;
+		}
+		input[type="submit"]{
+			background: #eff3ff	;
+			padding: 2px 6px 2px 6px;	}	
+	</style>
 </head>
-
 <body>
 
-    <img id="logo_mini" src="images/logo_mini.svg">
-    <div id="form">
-    <form action="" method="post">
-        <br><br>
+	<div style="position: absolute;top: 30%;left: 30%;border:2px solid #f2f2f2;padding: 40px 10px;background: #EA907C;text-align: center">
+		
+		<form method="post" action="">
+			<input type="text" name="username" placeholder="Enter username">
+			<input type="password" name="password" placeholder="Enter Your password"> <br>
 
-        <h1>Login account</h1>
-        <label>Email address</label><br>
-        <input placeholder="Email" type="email" name="email" class="inputfield"><br>
-
-        <label>Password</label><br>
-        <input placeholder="Password" type="password" name="password" class="inputfield"><br>
-
-        <input type="checkbox"></input>
-        <span>Remeber me</span>
-       
-        <a href="resetpassword.php" id="forgotLink">Forgot password?</a><br>
-
-        <?php if (isset($error)) {
-        echo "<div id='error'>".$error."</div>";
-        }?>
-
-        <button type="submit">Login</button>
-    </form>
-
-    <a href="register.php" id="noAccountLink">Don't have an account yet?</a><br>
-    </div>
-
+			<input type="submit" name="submit" value="submit"><br><br>
+			<?php echo  $msg ? $msg : '' ;?>
+		</form>
+	</div>
+		
 </body>
-
 </html>
+
