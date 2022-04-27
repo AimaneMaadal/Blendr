@@ -1,15 +1,16 @@
 <?php
+include'class/user.php';
 
-    include_once("bootstrap.php");
-
-
-
-    include'class/user.php';
 session_start();
 if(!isset($_SESSION['user']))
 {
  header('location:login.php');
 }
+$user_id=$_SESSION['user'];
+$user = new USER();
+
+//fetch user details
+$result=$user->user_detail($user_id);
 
 ?><!DOCTYPE html>
 <html lang="en">
@@ -22,11 +23,9 @@ if(!isset($_SESSION['user']))
     <style>
         /* Stacked Cards component css */
 body {
-  overflow-x: hidden;
   font-family: "Open Sans";
   font-size: 12px;
   background: #BFC7D0;
-  padding: 10%;
 }
 
 .no-transition {
@@ -45,6 +44,8 @@ body {
 
 .stackedcards {
     position: relative;
+    width: 358px;
+    margin: 0 auto;
 }
 
 .stackedcards * {
@@ -196,12 +197,15 @@ body {
 
 
     </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 
 <body>
-    <header>
-        <?php include('nav.php');?>
-    </header>
+<div class="container">
+<div class="header">
+		<a href="Logout.php">Logout</a>
+		<a href="">Hi <?php echo($result['username']); ?></a>
+	</div>
 
     <div id="stacked-cards-block" class="stackedcards stackedcards--animatable init">
   <div class="stackedcards-container">
@@ -221,7 +225,16 @@ body {
   <div class="left-action">Left</div>
   <div class="top-action">Top</div>
   <div class="right-action">Right</div>
-</div>  
+</div>
+
+<div class="bottomNav">
+		<a href="index.php"><img src="images/icons/home.svg" style="width: 8%;"></a>
+		<a href="recepten.php"><img src="images/icons/recepten.svg" style="width: 6%;"></a>
+		<a href="blend.php"><img src="images/icons/blend.svg" style="width: 9%;"></a>
+		<a href="chat.php"><img src="images/icons/chat_active.svg" style="width: 9%;"></a>
+	<div>
+
+</div>
 <script>
 
 

@@ -32,16 +32,7 @@ if(isset($_POST['submit'])){
 <html>
 <head>
 	<title>Chat Message</title>
-	<style type="text/css">
-		input[type="text"],input[type="password"]{
-			padding: 6px 14px 6px 14px;
-			width: 51%;
-			margin: 15px;
-		}
-		input[type="submit"]{
-			background: #eff3ff	;
-			padding: 2px 6px 2px 6px;	}	
-	</style>
+	<link rel="stylesheet" href="styles/style.css">
 </head>
 <body>
 
