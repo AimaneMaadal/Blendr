@@ -1,47 +1,50 @@
-<?php
-include'class/user.php';
-session_start();
-if(!isset($_SESSION['user']))
-{
- header('location:login.php');
-}
-$user_id=$_SESSION['user'];
-$user = new USER();
-
-//fetch user details
-$result=$user->user_detail($user_id);
-
+<?php 
+  session_start();
+  if(isset($_SESSION['unique_id'])){
+    header("location: match.php");
+  }
 ?>
 
-<!DOCTYPE html>
-<html>
-<head>
-	<title></title>
-
-    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
-    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>	
-    <script type="text/javascript" src="function.js"></script>
-    <script src="https://cdn.rawgit.com/mervick/emojionearea/master/dist/emojionearea.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.form/4.2.2/jquery.form.js"></script>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link rel="stylesheet" href="css/style.css">
-	
-</head>
+<?php include_once "header.php"; ?>
 <body>
-<div class="container">
-	<div class="header">
-		<a href="Logout.php">Logout</a>
-		<a href="">Hi <?php echo($result['username']); ?></a>
-		
-	</div>
-	<div class="bottomNav">
-		<a href="index.php"><img src="images/icons/home_active.svg" style="width: 8%;"></a>
-		<a href="recepten.php"><img src="images/icons/recepten.svg" style="width: 6%;"></a>
-		<a href="blend.php"><img src="images/icons/blend.svg" style="width: 9%;"></a>
-		<a href="chat.php"><img src="images/icons/chat.svg" style="width: 9%;"></a>
-	<div>
-</div>
+  <div class="wrapper">
+    <section class="form signup">
+      <header>Blendr</header>
+      <form action="#" method="POST" enctype="multipart/form-data" autocomplete="off">
+        <div class="error-text"></div>
+        <div class="name-details">
+          <div class="field input">
+            <label>First Name</label>
+            <input type="text" name="fname" placeholder="First name" required>
+          </div>
+          <div class="field input">
+            <label>Last Name</label>
+            <input type="text" name="lname" placeholder="Last name" required>
+          </div>
+        </div>
+        <div class="field input">
+          <label>Email Address</label>
+          <input type="text" name="email" placeholder="Enter your email" required>
+        </div>
+        <div class="field input">
+          <label>Password</label>
+          <input type="password" name="password" placeholder="Enter new password" required>
+          <i class="fas fa-eye"></i>
+        </div>
+        <div class="field image">
+          <label>Select Image</label>
+          <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
+        </div>
+        <div class="field button">
+          <input type="submit" name="submit" value="Sign up">
+        </div>
+      </form>
+      <div class="link">Already signed up? <a href="login.php">Login now</a></div>
+    </section>
+  </div>
 
+  <script src="javascript/pass-show-hide.js"></script>
+  <script src="javascript/signup.js"></script>
 
 </body>
 </html>
