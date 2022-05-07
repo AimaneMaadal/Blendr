@@ -16,8 +16,7 @@
 <div class="wrapper">
 <header>
         <div class="content">
-
-        <a href="php/logout.php?logout_id=<?php echo $row['unique_id']; ?>" class="logout">Logout</a>
+        <a href="php/logout.php?logout_id=<?php echo $_SESSION['unique_id'] ?>" class="logout">Logout</a>
     </header>
 
     <div id="stacked-cards-block" class="stackedcards stackedcards--animatable init">

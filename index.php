@@ -1,7 +1,7 @@
 <?php 
   session_start();
   if(isset($_SESSION['unique_id'])){
-    header("location: match.php");
+    
   }
 ?>
 
@@ -36,7 +36,7 @@
           <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
         </div>
         <div class="field button">
-          <input type="submit" name="submit" value="Sign up">
+          <input type="button" name="submit" value="Sign up">
         </div>
       </form>
       <div class="link">Already signed up? <a href="login.php">Login now</a></div>
