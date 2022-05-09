@@ -1,11 +1,16 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200;300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@200;300;400;500;600;700&display=swap');
 
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-decoration: none;
-  font-family: 'Poppins', sans-serif;
+  font-family: 'Source Sans Pro';
+  color: #001F3B;
+}
+h1{
+  font-size: 36px;
 }
 
 body {
@@ -13,7 +18,7 @@ body {
   align-items: center;
   justify-content: center;
   min-height: 100vh;
-  background: #f7f7f7;
+  background: #ffecca;
   padding: 0 10px;
 }
 
@@ -57,16 +62,13 @@ body {
   border-radius: 5px;
   background: #f8d7da;
   border: 1px solid #f5c6cb;
-  margin-bottom: 10px;
+  margin-bottom: 0px;
+  margin-top: 10px;
   display: none;
 }
 
 .form form .name-details {
   display: flex;
-}
-
-.form .name-details .field:first-child {
-  margin-right: 10px;
 }
 
 .form .name-details .field:last-child {
@@ -75,7 +77,7 @@ body {
 
 .form form .field {
   display: flex;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
   flex-direction: column;
   position: relative;
 }
@@ -85,12 +87,19 @@ body {
 }
 
 .form form .input input {
-  height: 40px;
   width: 100%;
-  font-size: 16px;
+  font-size: 12px;
   padding: 0 10px;
-  border-radius: 5px;
-  border: 1px solid #ccc;
+  border-radius: 10px;
+  background-color: #ECECEC;
+  height: 40px;
+  border: none;
+  color: #001F3C;
+  font-weight: 600;
+}
+::placeholder {
+  color: #001F3C;
+  opacity: 1;
 }
 
 .form form .field input {
@@ -106,16 +115,18 @@ body {
   border: none;
   color: #fff;
   font-size: 17px;
-  background: rgb(238, 96, 2);
-  border-radius: 5px;
+  background: #FF7A00;
+  border-radius: 15px;
   cursor: pointer;
   margin-top: 13px;
+  font-weight: 600;
 }
+
 
 .form form .field i {
   position: absolute;
   right: 15px;
-  top: 70%;
+  top: 50%;
   color: #ccc;
   cursor: pointer;
   transform: translateY(-50%);
@@ -129,11 +140,12 @@ body {
 .form .link {
   text-align: center;
   margin: 10px 0;
-  font-size: 17px;
+  font-size: 13px;
+  font-weight: 600;
 }
 
 .form .link a {
-  color: rgb(238, 96, 2);
+  color: #FF7A00
 }
 
 .form .link a:hover {
@@ -155,10 +167,6 @@ body {
   justify-content: space-between;
 }
 
-.wrapper img {
-  object-fit: cover;
-  border-radius: 50%;
-}
 
 .users header img {
   height: 50px;
@@ -496,191 +504,3 @@ body {
 }
 
 
-/* Stacked Cards component css */
-body {
-  font-family: "Open Sans";
-  font-size: 12px;
-  background: #BFC7D0;
-}
-
-.no-transition {
-  -webkit-transition: none ! important;
-  -o-transition: none ! important;
-  transition: none ! important;
-}
-
-.stackedcards-overflow {
-  overflow-y: hidden !important;
-}
-
-.stackedcards.init {
-  opacity: 0;
-  /* set the opacity to 0 if you want a fade-in effect to stacked cards on page load */
-}
-
-.stackedcards {
-  position: relative;
-  width: 90%;
-  margin: 0 auto;
-}
-
-.stackedcards * {
-  -webkit-user-select: none;
-  -moz-user-select: none;
-  -ms-user-select: none;
-  user-select: none;
-}
-
-.stackedcards--animatable {
-  -webkit-transition: all 400ms ease;
-  -o-transition: all 400ms ease;
-  transition: all 400ms ease;
-}
-
-.stackedcards .stackedcards-container>*,
-.stackedcards-overlay {
-  position: absolute;
-  width: 100%;
-  /* set 100% */
-  height: 300px;
-  /* set 100% */
-  will-change: transform, opacity;
-  top: 0;
-  border-radius: 10px;
-}
-
-.stackedcards-overlay.left>div,
-.stackedcards-overlay.right>div,
-.stackedcards-overlay.top>div {
-  width: 100%;
-  height: 100%;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-}
-
-.stackedcards-overlay.left,
-.stackedcards-overlay.right,
-.stackedcards-overlay.top {
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  left: 0;
-  opacity: 0;
-  top: 0;
-  height: 100%;
-  font-size: 24px;
-  /* this style was added only for better preview */
-  text-transform: uppercase;
-  /* this style was added only for better preview */
-  font-weight: 500;
-  /* this style was added only for better preview */
-  color: #fff;
-  /* this style was added only for better preview */
-}
-
-.stackedcards-overlay.top {
-  background: #E38568;
-}
-
-.stackedcards-overlay.right {
-  background: #7BB3C5;
-}
-
-.stackedcards-overlay.left {
-  background: #E58D93;
-}
-
-.stackedcards-overlay.left:empty,
-.stackedcards-overlay.right:empty,
-.stackedcards-overlay.top:empty {
-  display: none !important;
-}
-
-.stackedcards-overlay-hidden {
-  display: none;
-}
-
-.stackedcards-origin-bottom {
-  -webkit-transform-origin: bottom;
-  -ms-transform-origin: bottom;
-  transform-origin: bottom;
-}
-
-.stackedcards-origin-top {
-  -webkit-transform-origin: top;
-  -ms-transform-origin: top;
-  transform-origin: top;
-}
-
-.stackedcards-bottom,
-.stackedcards-top,
-.stackedcards-none {
-  background: #fff;
-  /* set card background background */
-  height: 100%;
-}
-
-.stackedcards .stackedcards-container> :nth-child(1) {
-  position: relative;
-  display: block;
-}
-
-/* global actions buttons*/
-.global-actions {
-  display: -webkit-inline-box;
-  display: -ms-inline-flexbox;
-  display: inline-flex;
-  width: 90%;
-  margin-top: 10px;
-}
-
-.top-action,
-.right-action,
-.left-action {
-  width: 100%;
-  height: 50px;
-  border-radius: 10px;
-  display: -webkit-box;
-  display: -ms-flexbox;
-  display: flex;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
-  align-items: center;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  text-transform: uppercase;
-  font-weight: 500;
-  color: #fff;
-}
-
-.top-action {
-  background: #E38568;
-  margin: 0 10px;
-}
-
-.right-action {
-  background: #7BB3C5;
-}
-
-.left-action {
-  background: #E58D93;
-}
-
-/* elements on stacked cards */
-.card-item {
-  background: #f45a5a;
-}

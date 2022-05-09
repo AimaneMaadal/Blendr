@@ -4,8 +4,12 @@
     $fname = mysqli_real_escape_string($conn, $_POST['fname']);
     $lname = mysqli_real_escape_string($conn, $_POST['lname']);
     $email = mysqli_real_escape_string($conn, $_POST['email']);
+    $day = mysqli_real_escape_string($conn, $_POST['day']);
+    $month = mysqli_real_escape_string($conn, $_POST['month']);
+    $year = mysqli_real_escape_string($conn, $_POST['year']);
+    $date= strtotime("$year/$month/$day");
     $password = mysqli_real_escape_string($conn, $_POST['password']);
-    if(!empty($fname) && !empty($lname) && !empty($email) && !empty($password)){
+    if(!empty($fname) && !empty($lname) && !empty($email) && !empty($password) && !empty($day) && !empty($month) && !empty($year) && $year != 'Year' && $month != 'Month' && $day != 'Day'){
         if(filter_var($email, FILTER_VALIDATE_EMAIL)){
             $sql = mysqli_query($conn, "SELECT * FROM users WHERE email = '{$email}'");
             if(mysqli_num_rows($sql) > 0){
@@ -29,8 +33,8 @@
                                 $ran_id = rand(time(), 100000000);
                                 $status = "Active now";
                                 $encrypt_pass = md5($password);
-                                $insert_query = mysqli_query($conn, "INSERT INTO users (unique_id, fname, lname, email, password, img, status)
-                                VALUES ({$ran_id}, '{$fname}','{$lname}', '{$email}', '{$encrypt_pass}', '{$new_img_name}', '{$status}')");
+                                $insert_query = mysqli_query($conn, "INSERT INTO users (unique_id, fname, lname, email, password, date, img, status)
+                                VALUES ({$ran_id}, '{$fname}','{$lname}', '{$email}', '{$encrypt_pass}', {$date}, '{$new_img_name}', '{$status}')");
                                 if($insert_query){
                                     $select_sql2 = mysqli_query($conn, "SELECT * FROM users WHERE email = '{$email}'");
                                     if(mysqli_num_rows($select_sql2) > 0){
@@ -56,6 +60,6 @@
             echo "$email is not a valid email!";
         }
     }else{
-        echo "All input fields are required!";
+        echo "All input fields are required!".$date;
     }
 ?>

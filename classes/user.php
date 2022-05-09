@@ -1,7 +1,7 @@
 <?php
 
     
-include_once(__DIR__ . "/config.php");
+include_once("config.php");
 class User{
     private $conn;
     private $name;
@@ -16,6 +16,19 @@ class User{
         $result = $stmt->fetchAll();
         return $result;
     }
+    //public static function get all users where id = $id with bind values
+    public static function getUserById($id){
+        $conn = Db::getInstance();
+        $stmt = $conn->prepare("SELECT * FROM users WHERE unique_id = :id");
+        $stmt->bindValue(":id", $id);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    //bind
+    
+
 
 
 

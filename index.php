@@ -1,50 +1,47 @@
 <?php 
   session_start();
-  if(isset($_SESSION['unique_id'])){
-    
+  if (isset($_SESSION['unique_id'])) {
   }
 ?>
 
 <?php include_once "header.php"; ?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    input {
+        height: 45px;
+        border: none;
+        color: red;
+        font-size: 17px;
+        background: #ffffff;
+        border-radius: 15px;
+        cursor: pointer;
+        margin-top: 737px;
+        font-weight: 600;
+        width: 80%;
+        /* bottom: 0; */
+    }
+    .wrapper{
+        background-image: url("php/images/start.svg");
+    }
+
+    
+  </style>
+</head>
+<script src="https://kit.fontawesome.com/6ec6696b28.js" crossorigin="anonymous"></script>
 <body>
   <div class="wrapper">
-    <section class="form signup">
-      <header>Blendr</header>
-      <form action="#" method="POST" enctype="multipart/form-data" autocomplete="off">
-        <div class="error-text"></div>
-        <div class="name-details">
-          <div class="field input">
-            <label>First Name</label>
-            <input type="text" name="fname" placeholder="First name" required>
-          </div>
-          <div class="field input">
-            <label>Last Name</label>
-            <input type="text" name="lname" placeholder="Last name" required>
-          </div>
-        </div>
-        <div class="field input">
-          <label>Email Address</label>
-          <input type="text" name="email" placeholder="Enter your email" required>
-        </div>
-        <div class="field input">
-          <label>Password</label>
-          <input type="password" name="password" placeholder="Enter new password" required>
-          <i class="fas fa-eye"></i>
-        </div>
-        <div class="field image">
-          <label>Select Image</label>
-          <input type="file" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
-        </div>
-        <div class="field button">
-          <input type="button" name="submit" value="Sign up">
-        </div>
-      </form>
-      <div class="link">Already signed up? <a href="login.php">Login now</a></div>
-    </section>
+      
+        <input type="button"  onclick="location.href='login/signup.php';"  name="submit" value="Volgende">
   </div>
 
-  <script src="javascript/pass-show-hide.js"></script>
-  <script src="javascript/signup.js"></script>
-
+  
 </body>
 </html>
+
+
