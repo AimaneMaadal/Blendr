@@ -40,7 +40,8 @@
             $stmt->execute();
             $recipes = $stmt->fetchAll(PDO::FETCH_ASSOC);
             foreach ($recipes as $recipe) {
-                echo "<div class='recipeBox'>";
+                $recipeId = $recipe['recipe_id'];
+                echo "<a href='./id/index.php?id=$recipeId'><div class='recipeBox'>";
                 $receptImg = $recipe['img'];
                 echo "<img src='$receptImg'>";
                 echo "<h2>" . $recipe['name'] . "</h2>";
@@ -48,7 +49,7 @@
                 foreach ($tags as $tag) {
                     echo "<span>".$tag."</span> ";
                 }
-                echo "</div>";
+                echo "</div></a>";
             }
           
     
