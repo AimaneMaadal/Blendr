@@ -7,6 +7,7 @@
   
   $data = User::getAllUsers();
 
+
 // echo $_SESSION['unique_id'];
 
 $geo = User::getUserByUniqueId($_SESSION['unique_id'])[0]['geo'];
@@ -33,7 +34,7 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
         return round($miles);
     }
   }
-echo distance($lat1, $long1, 51.00468, 4.30304, "K");
+
 ?>
 <?php include_once "../header.php"; ?>
 
@@ -45,29 +46,80 @@ echo distance($lat1, $long1, 51.00468, 4.30304, "K");
     <title>Blendr</title>
     <link rel="stylesheet" href="match.css">
     <link rel="stylesheet" href="../style.css">
+    <script src="https://kit.fontawesome.com/6ec6696b28.js" crossorigin="anonymous"></script>
     <style>
         .card-item{
             /* background-image: url("../php/images/food2.jfif"); */
+        }
+        .pop_up{
+            background-color: #FFE6AE;
+            margin-bottom: 58px;
+            margin-top: -53px;
+            width: 75%;
+            height: 54px;
+            border-radius: 16px;
+        }
+        .pop_up>div{
+            background-color: white;
+            width: 40px;
+            height: 40px;
+            margin: 7px 3px 3px 9px;
+            border-radius: 12px;
+        }
+        .pop_up h3 {
+            float: left;
+            margin: -38px 0px 0px 66px;
+            color: #001F3B;
+        }
+        .pop_up p {
+            float: left;
+            margin: -23px 0px 0px 66px;
+            color: #001F3B;
+        }
+        .pop_up>div i{
+            color: #FFDD27;
+            margin: 20px 0px 0px 7px;
+        }
+        .pop_up i {
+            color: #ffffff;
+            margin: -22px 0px 0px 257px;
+            float: left;
+        }
+        .profilePic {
+            background: white;
+            width: 45px;
+            height: 45px;
+            margin: -100px -138px 80px -30px;
+            border-radius: 425px;
+            float: right;
+        }
+        .menu {
+            float: left;
+            margin: -85px 0px 0px -142px;
         }
     </style>    
 <body>
 <div class="wrapper">
 <header>
+<img src="../php/images/vector.svg" alt="logo" class="menu">
+<?php echo'<img class="profilePic" src="../php/images/' .$data[0]['img']. '" alt="">'; ?>
         <div class="content">
-        <a href="php/logout.php?logout_id=<?php echo $_SESSION['unique_id'] ?>" class="logout">Logout</a>
+        <!-- <a href="php/logout.php?logout_id=<?php echo $_SESSION['unique_id'] ?>" class="logout">Logout</a> -->
     </header>
-
+        <div class="pop_up"><div><i class="fa-solid fa-crown fa-2xl" style="width:100%"></i></div><h3>Upgrade naar premium</h3><p>Ontmoet nieuwe mensen</p><i class="fa-solid fa-xmark fa-xl"></i></div>
     <div id="stacked-cards-block" class="stackedcards stackedcards--animatable init">
   <div class="stackedcards-container">
     <?php foreach($data as $row){ 
+        $lat2 = json_decode($row['geo'])[0];
+        $long2 = json_decode($row['geo'])[1];
         $img = "../php/images/".json_decode($row["showcase"])[0];            
-        echo '<div class="card-item" style="background-image:url(\'' .$img. '\'); background-position: center;  background-size: cover;" >
-            <a href="profilepage.php?id='.$row["unique_id"].'"><div class="card-inner">
-                <img src="../php/images/' .$row["img"]. '" alt="">  
+        echo '<div class="card-item" style="background-image:url(\'' .$img. '\'); background-position: center;  background-size: cover;" ><a href="profilepage.php?id='.$row["unique_id"].'">oo</a>
+            <div class="card-inner" onclick="link()"><a href="profilepage.php?id='.$row["unique_id"].'">
+                <img src="../php/images/' .$row["img"]. '" alt="">
                 <div class="userInfo">
-                <h3>' .$row["fname"].' '.$row["geo"].'</h3>
+                <h3>' .$row["fname"].' '.distance($lat1, $long1, $lat2, $long2, "K").'km</h3>
                 Mechelen
-                </div></a>
+                </a></div>
             </div>
         </div>';
     } 
@@ -80,7 +132,7 @@ echo distance($lat1, $long1, 51.00468, 4.30304, "K");
 </div>
 <div class="global-actions">
   <div class="left-action">Left</div>
-  <div class="top-action">Top</div>
+  <div class="top-action" id="topButton">Top</div>
   <div class="right-action">Right</div>
 </div>
 
@@ -90,10 +142,11 @@ echo distance($lat1, $long1, 51.00468, 4.30304, "K");
 
 <script>
 
-
     // JavaScript Document
 document.addEventListener("DOMContentLoaded", function(event) {
 
+
+    
 function stackedCards () {
 
     var stackedOptions = 'Top'; //Change stacked cards view from 'Bottom', 'Top' or 'None'.
@@ -272,6 +325,7 @@ function stackedCards () {
     
     //Functions to swipe top elements on logic external action.
     function onActionTop() {
+        alert();
         if(!(currentPosition >= maxElements)){
             if(useOverlays) {
                 leftObj.classList.remove('no-transition');
@@ -774,5 +828,8 @@ function stackedCards () {
 stackedCards();
 
 });
+
+
+
 </script>    
 </body>
