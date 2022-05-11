@@ -46,9 +46,7 @@ echo distance($lat1, $long1, 51.00468, 4.30304, "K");
     <link rel="stylesheet" href="match.css">
     <link rel="stylesheet" href="../style.css">
     <style>
-        .card-item{
-            /* background-image: url("../php/images/food2.jfif"); */
-        }
+
     </style>    
 <body>
 <div class="wrapper">
