@@ -279,7 +279,7 @@ form {
             var top = $('.topTags'); 
             var fieldHTML = '<div class="tagField"><input type="text" name="tags[]" class="clicker" value="" /></div>';
             var x = 1; 
-            var z = ["food2.jpg"];
+            var z = [];
 
             
             $(addButton).click(function(){
@@ -314,23 +314,25 @@ form {
                 console.log(z);
             });
             $(document).on('click', '.uploadTags', function(e){
-                e.preventDefault();
-                z = z.unique();
-                alert(z);
+                if (z == "") {
+                    alert("nope");  
+                }
+                else{
+                    const myJSON = JSON.stringify(z);
+                    alert(myJSON);
+                    $.ajax({
+                        url: "ajax/add_tags.php",
+                        type: "POST",
+                        data: {tags: myJSON},
+                        success: function(data){
+                            console.log(data);
+                            window.location.href = "../match/index.php";
+                        }
+                    });
+                    alert(z);
+                }
             });
-            Array.prototype.unique = function() {
-                var a = [];
-                var l = this.length;
-                for(var i=0; i<l; i++) {
-                for(var j=i+1; j<l; j++) {
-                    // If this[i] is found later in the array
-                    if (this[i] === this[j])
-                    j = ++i;
-                }
-                a.push(this[i]);
-                }
-                return a;
-            };
+
         });
 
       

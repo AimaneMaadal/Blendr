@@ -19,6 +19,7 @@
       margin: 30px auto;
       margin-bottom: -10px;
       display: block;
+      border-radius: 50%;
     }
     .form form .image input {
       display: none;
@@ -36,12 +37,15 @@
     {
         color: #ccc;
     }
+    #geo{
+      display: none;
+    }
 
     
   </style>
 </head>
 
-<body>
+<body onload="getLocation()">
   <div class="wrapper">
     <section class="form signup">
       <h1>Registreren</h1>
@@ -49,7 +53,7 @@
       <form action="#" method="POST" enctype="multipart/form-data" autocomplete="off">
         <div class="field image">
           <label>
-            <img src="../php/images/placeholder-removebg-preview.png" class="profilePic"></img><input type="file" capture="camera" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
+            <img src="../php/images/placeholder-removebg-preview.png" id="profilePic" class="profilePic"></img><input type="file" onchange="document.getElementById('profilePic').src = window.URL.createObjectURL(this.files[0])" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
             <img src="../php/images/add.svg" style="margin: -230px 0px 0px 160px; width: 12%">
             
           </label>
@@ -68,6 +72,7 @@
         </div>
         <div class="field input">
           <input type="password" name="password" placeholder="Enter new password" required>
+          <input type="text" name="geo" id="geo" placeholder="Enter new password">
           <i class="fas fa-eye"></i>
         </div>
         <?php
@@ -94,15 +99,37 @@
         ?>
         <div class="error-text"></div>
           <div class="field button">
-          <input type="button" name="submit" value="Volgende">
+          <input type="button" onclick="loadDoc()" name="submit" value="Volgende">
         </div>
       </form>
-      <div class="link">Heb je al een account? <a href="login.php">log in!</a></div>
+      <div class="link">Heb je al een account? <a href="index.php">log in!</a></div>
     </section>
   </div>
 
   <script src="javascript/pass-show-hide.js"></script>
   <script src="javascript/signup.js"></script>
+  <script>
+    imgInp.onchange = evt => {
+      const [file] = imgInp.files
+      if (file) {
+        blah.src = URL.createObjectURL(file)
+      }
+    }
+    var x = document.getElementById("demo");
+    function getLocation() {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(showPosition);
+        } else { 
+          x.innerHTML = "Geolocation is not supported by this browser.";
+        }
+    }
+
+    function showPosition(position) {
+      console.log(position);
+      var geo = JSON.stringify([position.coords.latitude, position.coords.longitude]);
+      document.getElementById("geo").value = geo;
+    }
+  </script>
 
 </body>
 </html>

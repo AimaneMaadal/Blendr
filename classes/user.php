@@ -25,8 +25,30 @@ class User{
         $result = $stmt->fetchAll();
         return $result;
     }
+    function calculateDistance($latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo){
+        // convert from degrees to radians
+        $latFrom = deg2rad($latitudeFrom);
+        $lonFrom = deg2rad($longitudeFrom);
+        $latTo = deg2rad($latitudeTo);
+        $lonTo = deg2rad($longitudeTo);
+      
+        $latDelta = $latTo - $latFrom;
+        $lonDelta = $lonTo - $lonFrom;
+      
+        $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
+          cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
+        return $angle * $earthRadius;
+    }
+    //get user by Unique_id 
+    public static function getUserByUniqueId($id){
+      $conn = Db::getInstance();
+      $stmt = $conn->prepare("SELECT * FROM users WHERE unique_id = :id");
+      $stmt->bindValue(":id", $id);
+      $stmt->execute();
+      $result = $stmt->fetchAll();
+      return $result;
+    }
 
-    //bind
     
 
 

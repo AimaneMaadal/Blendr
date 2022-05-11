@@ -7,6 +7,33 @@
   
   $data = User::getAllUsers();
 
+// echo $_SESSION['unique_id'];
+
+$geo = User::getUserByUniqueId($_SESSION['unique_id'])[0]['geo'];
+
+$lat1 = json_decode($geo)[0];
+$long1 = json_decode($geo)[1];
+
+//echo $lat1." ".$long1;
+
+function distance($lat1, $lon1, $lat2, $lon2, $unit) {
+
+    $theta = $lon1 - $lon2;
+    $dist = sin(deg2rad($lat1)) * sin(deg2rad($lat2)) +  cos(deg2rad($lat1)) * cos(deg2rad($lat2)) * cos(deg2rad($theta));
+    $dist = acos($dist);
+    $dist = rad2deg($dist);
+    $miles = $dist * 60 * 1.1515;
+    $unit = strtoupper($unit);
+  
+    if ($unit == "K") {
+        return round($miles * 1.609344);
+    } else if ($unit == "N") {
+        return round($miles * 0.8684);
+    } else {
+        return round($miles);
+    }
+  }
+echo distance($lat1, $long1, 51.00468, 4.30304, "K");
 ?>
 <?php include_once "../header.php"; ?>
 
@@ -38,8 +65,8 @@
             <a href="profilepage.php?id='.$row["unique_id"].'"><div class="card-inner">
                 <img src="../php/images/' .$row["img"]. '" alt="">  
                 <div class="userInfo">
-                <h3>' .$row["fname"].' '.$row["lname"].'</h3>
-                <p>' .$row["date"]. '</p>
+                <h3>' .$row["fname"].' '.$row["geo"].'</h3>
+                Mechelen
                 </div></a>
             </div>
         </div>';

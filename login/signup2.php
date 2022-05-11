@@ -245,7 +245,7 @@ $(document).on("click","#uploadImageDone",function(){
                 window.location.href = "signup3.php";
             }
         });
-}
+    }
 });
 
 </script>    
