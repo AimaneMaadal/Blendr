@@ -16,6 +16,14 @@ class User{
         $result = $stmt->fetchAll();
         return $result;
     }
+    //get all users id from users
+    public static function getAllUsersId(){
+        $conn = Db::getInstance();
+        $stmt = $conn->prepare("SELECT unique_id FROM users");
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
     //public static function get all users where id = $id with bind values
     public static function getUserById($id){
         $conn = Db::getInstance();

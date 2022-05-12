@@ -147,7 +147,6 @@ body {
     display: inline-flex;
     width: 75%;
     margin-top: 10px;
-    align-items: baseline;
     justify-content: space-between;
 }
 
@@ -169,6 +168,7 @@ body {
     text-transform: uppercase;
     font-weight: 500;
     color: #fff;
+    margin-top: 15px;
 }
 
 .top-action {

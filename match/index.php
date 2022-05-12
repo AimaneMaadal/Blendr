@@ -8,6 +8,8 @@
   $data = User::getAllUsers();
 
 
+
+
 // echo $_SESSION['unique_id'];
 
 $geo = User::getUserByUniqueId($_SESSION['unique_id'])[0]['geo'];
@@ -34,6 +36,15 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
         return round($miles);
     }
   }
+
+  $usersNew = [];
+  foreach($data as $user){
+      //push to array
+      array_push($usersNew, $user['unique_id']);
+  }
+
+  //var_dump($usersNew);
+
 
 ?>
 <?php include_once "../header.php"; ?>
@@ -102,7 +113,7 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
 <div class="wrapper">
 <header>
 <img src="../php/images/vector.svg" alt="logo" class="menu">
-<?php echo'<img class="profilePic" src="../php/images/' .$data[0]['img']. '" alt="">'; ?>
+<?php echo'<img class="profilePic" id="profilePicture" data-id="'.$_SESSION["unique_id"].'" src="../php/images/' .$data[0]['img']. '" alt="">'; ?>
         <div class="content">
         <!-- <a href="php/logout.php?logout_id=<?php echo $_SESSION['unique_id'] ?>" class="logout">Logout</a> -->
     </header>
@@ -114,8 +125,8 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
         $long2 = json_decode($row['geo'])[1];
         $img = "../php/images/".json_decode($row["showcase"])[0];            
         echo '<div class="card-item" style="background-image:url(\'' .$img. '\'); background-position: center;  background-size: cover;" ><a href="profilepage.php?id='.$row["unique_id"].'">oo</a>
-            <div class="card-inner" onclick="link()"><a href="profilepage.php?id='.$row["unique_id"].'">
-                <img src="../php/images/' .$row["img"]. '" alt="">
+            <div class="card-inner" onclick="link()"><a href="profilepage.php?id='.$row["user_id"].'">
+                <img data-id="'.$row["user_id"].'" src="../php/images/' .$row["img"]. '" alt="" id="profilePicture2">
                 <div class="userInfo">
                 <h3>' .$row["fname"].' '.distance($lat1, $long1, $lat2, $long2, "K").'km</h3>
                 Mechelen
@@ -126,13 +137,14 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
     ?>
     
   </div>
+ 
   <div class="stackedcards--animatable stackedcards-overlay top">TOP</div>
   <div class="stackedcards--animatable stackedcards-overlay right">RIGHT</div>
   <div class="stackedcards--animatable stackedcards-overlay left">LEFT</div>
 </div>
 <div class="global-actions">
   <div class="left-action">Left</div>
-  <div class="top-action" id="topButton">Top</div>
+  <div class="top-action" id="topButton"><img src="../php/images/pot.svg"></img></div>
   <div class="right-action">Right</div>
 </div>
 
@@ -168,6 +180,10 @@ function stackedCards () {
     var elementHeight;
     var obj;
     var elTrans;
+    var counter = 0;
+    var UsersArr = <?php echo json_encode($usersNew); ?>;
+    var Userlenght = UsersArr.length;
+
     
     obj = document.getElementById('stacked-cards-block');
     stackedCardsObj = obj.querySelector('.stackedcards-container');
@@ -321,11 +337,18 @@ function stackedCards () {
                 resetOverlayRight();
             },300);
         }
+
     };
     
     //Functions to swipe top elements on logic external action.
     function onActionTop() {
-        alert();
+        // const xhttp = new XMLHttpRequest();
+        // xhttp.onload = function() {
+        //     alert(this.responseText);
+        // }
+        // xhttp.open("GET", "ajax/add_match.php?id="+document.getElementById('profilePicture').getAttribute('data-id')+"&id2="+UsersArr[counter]+"&like=2", true);
+        // xhttp.send();
+
         if(!(currentPosition >= maxElements)){
             if(useOverlays) {
                 leftObj.classList.remove('no-transition');
@@ -344,6 +367,13 @@ function stackedCards () {
     
     //Swipe active card to left.
     function onSwipeLeft() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            alert(this.responseText);
+        }
+        xhttp.open("GET", "ajax/add_match.php?id="+document.getElementById('profilePicture').getAttribute('data-id')+"&id2="+UsersArr[counter]+"&like=0", true);
+        xhttp.send();
+
         removeNoTransition();
         transformUi(-1000, 0, 0, currentElementObj);
         if(useOverlays){
@@ -359,6 +389,13 @@ function stackedCards () {
     
     //Swipe active card to right.
     function onSwipeRight() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            alert(this.responseText);
+        }
+        xhttp.open("GET", "ajax/add_match.php?id="+document.getElementById('profilePicture').getAttribute('data-id')+"&id2="+UsersArr[counter]+"&like=1", true);
+        xhttp.send();
+
         removeNoTransition();
         transformUi(1000, 0, 0, currentElementObj);
         if(useOverlays){
@@ -375,6 +412,13 @@ function stackedCards () {
     
     //Swipe active card to top.
     function onSwipeTop() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function() {
+            alert(this.responseText);
+        }
+        xhttp.open("GET", "ajax/add_match.php?id="+document.getElementById('profilePicture').getAttribute('data-id')+"&id2="+UsersArr[counter]+"&like=2", true);
+        xhttp.send();
+
         removeNoTransition();
         transformUi(0, -1000, 0, currentElementObj);
         if(useOverlays){
@@ -542,6 +586,7 @@ function stackedCards () {
             listElNodesObj[currentPosition - 1].classList.remove('stackedcards-active');
             listElNodesObj[currentPosition - 1].classList.add('stackedcards-hidden');
             listElNodesObj[currentPosition].classList.add('stackedcards-active');
+            counter++;
         }		 
     };
 
