@@ -96,14 +96,6 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
             margin: -22px 0px 0px 257px;
             float: left;
         }
-        .profilePic {
-            background: white;
-            width: 45px;
-            height: 45px;
-            margin: -100px -138px 80px -30px;
-            border-radius: 425px;
-            float: right;
-        }
         .menu {
             float: left;
             margin: -85px 0px 0px -142px;

@@ -144,12 +144,6 @@ form {
     gap: 7px;
     margin-bottom: 20px;
 }
-.wrapper{
-    overflow-y: scroll;
-}
-::-webkit-scrollbar {
-  width: 0px;
-}
 .uploadTags {
     height: 45px;
     width: 300px;

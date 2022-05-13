@@ -21,6 +21,18 @@ body {
   background: #ffecca;
   padding: 0 10px;
 }
+.profilePic {
+  width: 45px;
+  height: 45px;
+  border-radius: 425px;
+  margin-left: 200px;
+}
+.topHeader{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  width: 80%;
+}
 
 .wrapper {
   background: #F2F2F2;
@@ -31,10 +43,13 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
   border: 10px solid black;
   box-shadow: 0 0 128px 0 rgba(0, 0, 0, 0.1),
     0 32px 64px -48px rgba(0, 0, 0, 0.5);
+  overflow-y: scroll;
+}
+::-webkit-scrollbar {
+  width: 0px;
 }
 
 /* Login & Signup Form CSS Start */

@@ -1,5 +1,9 @@
 <?php 
   session_start();
+  echo $_SESSION["unique_id"];
+  if (isset($_SESSION["unique_id"])) {
+    header('Location: ../feed/index.php');
+  }
 
 ?>
 
@@ -21,7 +25,7 @@
           <input type="submit" name="submit" value="Sign In">
         </div>
       </form>
-      <div class="link">Not yet signed up? <a href="index.php">Signup now</a></div>
+      <div class="link">Not yet signed up? <a href="signup.php">Signup now</a></div>
     </section>
   </div>
   
