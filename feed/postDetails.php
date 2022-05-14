@@ -6,7 +6,6 @@
 //     header("location: http://localhost/blendr/match.php");
 //   }
   
-  $data = post::getAllPosts();
 
   $user = user::getuserById($_SESSION['unique_id']);
 
@@ -49,6 +48,8 @@
         return $string ? implode(', ', $string) . ' ago' : 'just now';
     }
 
+    $post = post::getPostById($_GET['id']);
+    $post = $post[0];
   
 
 ?>
@@ -67,11 +68,10 @@
 <body>
 <div class="wrapper">
 <div class="topHeader">
-    <img src="../php/icons/vector.svg" alt="logo" class="menu">
+    <img src="../php/images/vector.svg" alt="logo" class="menu">
     <?php echo'<img class="profilePic" id="profilePicture" data-id="'.$_SESSION["unique_id"].'" src="../php/images/' .$user[0]["img"]. '" alt="">'; ?>
 </div>  
     <?php
-    foreach($data as $post){
         $usersPost = json_decode($post["users"]);
 
         echo '<div class="post"><a href="postDetails.php?id='.$post["id"].'">';
@@ -87,63 +87,55 @@
             }
             echo '</div>';
             echo '<p style="margin: -21px 0px 12px 48px;font-size: 11px;color: grey;font-weight: 500;">'.time_elapsed_string($post["date"]).'</p>';
-        echo '<img class="postImg" src="../php/images/' .$post["post_img"]. '" alt=""></a>';
+        echo '<img class="postImg" src="../php/images/' .$post["post_img"]. '" alt="">';
         if (post::checkIfUserLikedPost($_SESSION["unique_id"], $post["id"])) {
             echo '<input type="button" data-id="'.$post["id"].'" id="likeButton" class="liked">';
         }
         else{
             echo '<input type="button" data-id="'.$post["id"].'" id="likeButton" class="disliked">';
         }
-        echo '<input type="button" class="share">';
-        
-        if(post::getLastCommentByPostId($post["id"]) != null){
-            echo '<p class="comment"><b>'.user::getUserById(post::getLastCommentByPostId($post["id"])[0]["userId"])[0]["fname"].'</b>
-            <span style="color: #001f3b80;font-size: 15px;font-weight: 400;">'.post::getLastCommentByPostId($post["id"])[0]["comment"].'</span></p>';
-        }
-        echo '</div>';
-    }
+        echo '</a></div>';
     ?>
-    <div class="bottomNav">
-        <div><img src="../php/icons/home_fill.svg"></div>
-        <div><img src="../php/icons/Recepeten.svg"></div>
-        <div><img src="../php/icons/match.svg"></div>
-        <div><img src="../php/icons/chat.svg"></div>
+    <div id="comments">
+
+        <?php
+            $comments = post::getCommentsByPostId($post["id"]);
+            for ($i=0; $i < count($comments); $i++) { 
+                echo '<div class="comment">';
+                echo '<img class="profilePicComment" style="width: 30px;height: 30px;" id="profilePicture" src="../php/images/' .User::getUserById($comments[$i]["userId"])[0]["img"]. '" alt="">';
+                echo '<p>'.User::getUserById($comments[$i]["userId"])[0]["fname"].'</p>';
+                echo '<p>'.$comments[$i]["comment"].'</p>';
+                echo '</div>';
+            }
+        ?>
+        <input type="text" id="commentInput" placeholder="Add a comment...">
+        <input type="button" id="commentButton" value="Comment">
     </div>
-    <div><img src="../php/icons/add.svg" class="addPost" style="position: fixed;bottom: 150px;width: 60px;margin-left: 108px;"></div>
-   
 
 
 </div>
 </div>
 <script>
 
-$(document).on("click","#likeButton",function(){
-    var id = $(this).attr("data-id");
-    var userId = $("#profilePicture").attr("data-id");
-    //if hasclass delete class and add new class
-    if ($(this).hasClass("liked")) {
-        $(this).removeClass("liked");
-        $(this).addClass("disliked");
-    }
-    else{
-        $(this).removeClass("disliked");
-        $(this).addClass("liked");
-    }
-    $.ajax({  
-        url:"ajax/add_like.php",  
+$(document).on("click","#commentButton",function(){
+    var input = $("#commentInput").val();
+    if (input.length>0) {
+        $.ajax({  
+        url:"ajax/add_comment.php",  
         method:"POST",  
         data:{
-            id:id,
-            userId:userId
+            id: <?php echo $_SESSION["unique_id"] ?> ,
+            post_id: <?php echo $_GET["id"] ?>,
+            comment:input
         }, 
         success:function(data){ 
             console.log(data);
+            $('#comments').prepend(data);
         } 
-    }); 
- });
-
-
-
+        }); 
+        $("#commentInput").val("");
+    }     
+});
 </script>
 </body>
 

@@ -32,6 +32,34 @@ class Post{
         }
         return false;
     }
+    //get post by id
+    public static function getPostById($post_id){
+        $conn = Db::getInstance();
+        $stmt = $conn->prepare("SELECT * FROM posts WHERE id = :post_id");
+        $stmt->bindParam(":post_id", $post_id);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+
+    // get all comments by post id
+    public static function getCommentsByPostId($post_id){
+        $conn = Db::getInstance();
+        $stmt = $conn->prepare("SELECT * FROM comments WHERE postId = :post_id");
+        $stmt->bindParam(":post_id", $post_id);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+    // get last comment by post id
+    public static function getLastCommentByPostId($post_id){
+        $conn = Db::getInstance();
+        $stmt = $conn->prepare("SELECT * FROM comments WHERE postId = :post_id ORDER BY id DESC LIMIT 1");
+        $stmt->bindParam(":post_id", $post_id);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
 
 
 

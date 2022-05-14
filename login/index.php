@@ -1,6 +1,5 @@
 <?php 
   session_start();
-  echo $_SESSION["unique_id"];
   if (isset($_SESSION["unique_id"])) {
     header('Location: ../feed/index.php');
   }
