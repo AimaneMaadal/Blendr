@@ -27,7 +27,7 @@
         /* bottom: 0; */
     }
     .wrapper{
-        background-image: url("php/images/start.svg");
+        background-image: url("php/icons/start.svg");
     }
 
     

@@ -68,7 +68,7 @@
 <body>
 <div class="wrapper">
 <div class="topHeader">
-    <img src="../php/images/vector.svg" alt="logo" class="menu">
+    <img src="../php/icons/vector.svg" alt="logo" class="menuButton">
     <?php echo'<img class="profilePic" id="profilePicture" data-id="'.$_SESSION["unique_id"].'" src="../php/images/' .$user[0]["img"]. '" alt="">'; ?>
 </div>  
     <?php

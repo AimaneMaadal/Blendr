@@ -54,7 +54,7 @@
         <div class="field image">
           <label>
             <img src="../php/images/placeholder-removebg-preview.png" id="profilePic" class="profilePic"></img><input type="file" onchange="document.getElementById('profilePic').src = window.URL.createObjectURL(this.files[0])" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
-            <img src="../php/images/add.svg" style="margin: -230px 0px 0px 160px; width: 12%">
+            <img src="../php/icons/add.svg" style="margin: -230px 0px 0px 160px; width: 12%">
             
           </label>
           
