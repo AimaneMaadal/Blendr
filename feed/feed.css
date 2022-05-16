@@ -264,29 +264,4 @@
     width: 80%;
 }
  
-input:last-child {
-   height: 45px;
-   width: 100%;
-   border: none;
-   color: #fff;
-   font-size: 17px;
-   background: #FF7A00;
-   border-radius: 15px;
-   cursor: pointer;
-   margin-top: 13px;
-   font-weight: 600;
-}
-.fileChoice{
-   display: flex;
-   justify-content: space-around;
-   margin-top: 167px;
-}
-.fileChoice a:first-child{
-   font-weight: 600px;
-}
-.activeChoice{
-   border-bottom: 3px solid #FF7A00;
-   height: 15px;
-   width: 160px;
-   text-align: center;
-}
+
