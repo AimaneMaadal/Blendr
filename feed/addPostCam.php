@@ -10,6 +10,7 @@ session_start();
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>How to capture picture from webcam with Webcam.js</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
     <link rel="stylesheet" href="feed.css">
     <link rel="stylesheet" href="../style.css">
 	
@@ -28,6 +29,7 @@ session_start();
 	#my_camera video{
 		border-radius: 10px;
     }
+
 	.fileChoice{
 		display: flex;
 		justify-content: space-around;
@@ -49,8 +51,9 @@ session_start();
 		position: absolute;
 		bottom: 389px;
 		display: block;
-		background-color: orange;
+		background-color: #FF7A00;
 		border: none;
+		border-radius: 10px;
 		color: white;
 		font-weight: 700;
 	}
@@ -80,7 +83,6 @@ session_start();
 </div>
 	
 	<!-- Script -->
-	<script type="text/javascript" src="../vendor/webcamjs/webcam.min.js"></script>
 
 	<!-- Code to handle taking the snapshot and displaying it locally -->
 	<script language="JavaScript">
@@ -112,7 +114,7 @@ session_start();
 			Webcam.snap( function(data_uri) {
 				// display results in page
 				document.getElementById('results').innerHTML = 
-					'<img id="imageprev" src="'+data_uri+'"/>';
+					'<img id="imageprev" style="border-radius: 10px;" src="'+data_uri+'"/>';
 			} );
 
 			Webcam.reset();
