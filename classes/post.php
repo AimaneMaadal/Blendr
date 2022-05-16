@@ -60,6 +60,23 @@ class Post{
         $result = $stmt->fetchAll();
         return $result;
     }
+    // get last post from user id
+    public static function getLastPostByUserId($user_id){
+        $conn = Db::getInstance();
+        $stmt = $conn->prepare("SELECT * FROM posts WHERE userId = :user_id ORDER BY id DESC LIMIT 1");
+        $stmt->bindParam(":user_id", $user_id);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result;
+    }
+    // update description by post id
+    public static function updateDescription($post_id, $description){
+        $conn = Db::getInstance();
+        $stmt = $conn->prepare("UPDATE posts SET description = :description WHERE id = :post_id");
+        $stmt->bindParam(":post_id", $post_id);
+        $stmt->bindParam(":description", $description);
+        $stmt->execute();
+    }
 
 
 

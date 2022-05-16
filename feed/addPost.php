@@ -259,6 +259,7 @@ $(document).on("click","#uploadImageDone",function(){
             data: {images: myJSON},
             success: function(data){
                 console.log(data);
+                window.location.href = "addPostDescription.php?postId=" + data;
             }
         });
     }

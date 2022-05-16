@@ -77,18 +77,25 @@
 
                 echo '<div class="post"><a href="postDetails.php?id='.$post["id"].'">';
                     echo '<div class="postInfo">';
-                    for ($i=0; $i < count($usersPost); $i++) { 
-                        echo '<img class="profilePicPost" id="profilePicture" src="../php/images/' .User::getUserById($usersPost[$i])[0]["img"]. '" alt="">';
-                    }
-                    for ($i=0; $i < count($usersPost); $i++) { 
-                        echo "<h4>".User::getUserById($usersPost[$i])[0]["fname"].' '.User::getUserById($usersPost[$i])[0]["lname"]."</h4>";  
-                        if ($i<count($usersPost)-1) {
-                            echo "<h4>&nbsp;en&nbsp;</h4>";
+                    if(is_array($usersPost)){
+                        for ($i=0; $i < count($usersPost); $i++) { 
+                            echo '<img class="profilePicPost" id="profilePicture" src="../php/images/' .User::getUserById($usersPost[$i])[0]["img"]. '" alt="">';
+                        }
+                        for ($i=0; $i < count($usersPost); $i++) { 
+                            echo "<h4>".User::getUserById($usersPost[$i])[0]["fname"].' '.User::getUserById($usersPost[$i])[0]["lname"]."</h4>";  
+                            if ($i<count($usersPost)-1) {
+                                echo "<h4>&nbsp;en&nbsp;</h4>";
+                            }
                         }
                     }
+                    else {
+                        echo '<img class="profilePicPost" id="profilePicture" src="../php/images/' .User::getUserById($usersPost)[0]["img"]. '" alt="">';
+                        echo "<h4>".User::getUserById($usersPost)[0]["fname"].' '.User::getUserById($usersPost)[0]["lname"]."</h4>";  
+                    }
+
                     echo '</div>';
                     echo '<p style="margin: -21px 0px 12px 48px;font-size: 11px;color: grey;font-weight: 500;">'.time_elapsed_string($post["date"]).'</p>';
-                echo '<img class="postImg" src="../php/images/' .$post["post_img"]. '" alt=""></a>';
+                echo '<img class="postImg" src="../php/images/posts/' .$post["post_img"]. '" alt=""></a>';
                 if (post::checkIfUserLikedPost($_SESSION["unique_id"], $post["id"])) {
                     echo '<input type="button" data-id="'.$post["id"].'" id="likeButton" class="liked">';
                 }
@@ -116,7 +123,7 @@
         </label>
 
         <a href="addPost.php" class="menu-item item1"><i class="fa-solid fa-image"></i></a>
-        <a href="#" class="menu-item item2"><i class="fa-solid fa-film"></i></a>
+        <a href="addPostCam.php" class="menu-item item2"><i class="fa-solid fa-camera"></i></i></a>
         <a href="#" class="menu-item item3"><i class="fa-solid fa-utensils"></i></a>
         </nav>
 

@@ -56,6 +56,15 @@ class User{
       $result = $stmt->fetchAll();
       return $result;
     }
+    //get all matches by userID
+    public static function getAllMatches($id){
+      $conn = Db::getInstance();
+      $stmt = $conn->prepare("SELECT match_id FROM matches WHERE user_id = :id");
+      $stmt->bindValue(":id", $id);
+      $stmt->execute();
+      $result = $stmt->fetchAll();
+      return $result;
+    }
 
     
 
