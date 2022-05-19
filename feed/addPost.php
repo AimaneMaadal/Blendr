@@ -99,6 +99,7 @@ if(!empty($_POST['uploadImageSelect'])){
     <title>Document</title>
     <link rel="stylesheet" href="../style.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script> 
+    <script src="https://kit.fontawesome.com/6ec6696b28.js" crossorigin="anonymous"></script>
     <style>
         .image1{
             background-position: center;
@@ -107,10 +108,10 @@ if(!empty($_POST['uploadImageSelect'])){
             display: block;
             border: none;
             border-radius: 10px;
-            width: 30%;
-            height: 70px;
+            width: 32%;
+            height: 75px;
             float: left;
-            margin-top: 15px;
+            margin-top: 7px;
         }
         .image1:nth-child(1) {
             background-image: url("../php/images/food1.jfif");
@@ -145,6 +146,24 @@ if(!empty($_POST['uploadImageSelect'])){
         .image1:nth-child(10) {
             background-image: url("../php/images/food5.jpg");
         }
+        .image1:nth-child(11) {
+            background-image: url("../php/images/food6.jfif");
+        }
+        .image1:nth-child(12) {
+            background-image: url("../php/images/food4.jpg");
+        }
+        .image1:nth-child(13) {
+            background-image: url("../php/images/food5.jpg");
+        }
+        .image1:nth-child(14) {
+            background-image: url("../php/images/food6.jfif");
+        }
+        .image1:nth-child(15) {
+            background-image: url("../php/images/food4.jpg");
+        }
+        .image1:nth-child(16) {
+            background-image: url("../php/images/food5.jpg");
+        }
 
 
         form{
@@ -164,22 +183,11 @@ if(!empty($_POST['uploadImageSelect'])){
             justify-content: space-between;
             margin: 0 auto;
         }
-        input:last-child {
-            height: 45px;
-            width: 100%;
-            border: none;
-            color: #fff;
-            font-size: 17px;
-            background: #FF7A00;
-            border-radius: 15px;
-            cursor: pointer;
-            margin-top: 13px;
-            font-weight: 600;
-        }
+
         .fileChoice{
             display: flex;
             justify-content: space-around;
-            margin-top: 167px;
+            margin-top: 58px;
         }
         .fileChoice a:first-child{
             font-weight: 600px;
@@ -190,6 +198,9 @@ if(!empty($_POST['uploadImageSelect'])){
             width: 160px;
             text-align: center;
         }
+        .topHeader{
+            width: 100%;
+        }
 
     </style>
 </head>
@@ -199,8 +210,10 @@ if(!empty($_POST['uploadImageSelect'])){
 
    
     <form action="" method="POST" enctype="multipart/form-data">
-    <h1>Fotos uploaden</h1><br><br><br>
-      <p>Kies fotos van jou gerechten die andere op je profiel pagina kunne bekijken</p>
+    <div class="topHeader">
+        <div><i class="fa-solid fa-chevron-left fa-lg">&nbsp&nbsp&nbsp&nbsp&nbsp</i><b>Galerij</b> <i class="fa-solid fa-chevron-down"></i></div>
+        <div><label><i class="fa-solid fa-arrow-right fa-lg" style="color: #F0A500;"></i><input type="button" id="uploadImageDone" name="submit" value="Volgende" style="display: none;"></label></div>
+    </div>  
         <div class="food">
             <input type="button" data-id="food1.jfif" id="uploadImage" class="image1"></input>
             <input type="button" data-id="food2.jfif" id="uploadImage" class="image1"></input>
@@ -212,7 +225,14 @@ if(!empty($_POST['uploadImageSelect'])){
             <input type="button" data-id="food6.jfif" id="uploadImage" class="image1"></input>
             <input type="button" data-id="food4.jpg" id="uploadImage" class="image1"></input>
             <input type="button" data-id="food5.jpg" id="uploadImage" class="image1"></input>
-            <input type="button" id="uploadImageDone" name="submit" value="Volgende">
+            <input type="button" data-id="food1.jfif" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="food2.jfif" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="food6.jfif" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="food5.jpg" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="food2.jfif" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="food6.jfif" id="uploadImage" class="image1"></input>
+            
+            
         </div>
         
         <div class="fileChoice">

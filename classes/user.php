@@ -24,6 +24,15 @@ class User{
         $result = $stmt->fetchAll();
         return $result;
     }
+    //public static function get user geo by user id
+    public static function getUserGeo($id){
+        $conn = Db::getInstance();
+        $stmt = $conn->prepare("SELECT * FROM users WHERE unique_id = :id");
+        $stmt->bindParam(":id", $id);
+        $stmt->execute();
+        $result = $stmt->fetchAll();
+        return $result[0]['geo'];
+    }
     //public static function get all users where id = $id with bind values
     public static function getUserById($id){
         $conn = Db::getInstance();
@@ -32,20 +41,6 @@ class User{
         $stmt->execute();
         $result = $stmt->fetchAll();
         return $result;
-    }
-    function calculateDistance($latitudeFrom, $longitudeFrom, $latitudeTo, $longitudeTo){
-        // convert from degrees to radians
-        $latFrom = deg2rad($latitudeFrom);
-        $lonFrom = deg2rad($longitudeFrom);
-        $latTo = deg2rad($latitudeTo);
-        $lonTo = deg2rad($longitudeTo);
-      
-        $latDelta = $latTo - $latFrom;
-        $lonDelta = $lonTo - $lonFrom;
-      
-        $angle = 2 * asin(sqrt(pow(sin($latDelta / 2), 2) +
-          cos($latFrom) * cos($latTo) * pow(sin($lonDelta / 2), 2)));
-        return $angle * $earthRadius;
     }
     //get user by Unique_id 
     public static function getUserByUniqueId($id){
@@ -65,6 +60,24 @@ class User{
       $result = $stmt->fetchAll();
       return $result;
     }
+    //get all common intrests by 2 usres from database
+    public static function getCommonInterests($id1){
+      $conn = Db::getInstance();
+      $stmt = $conn->prepare("SELECT tags FROM users WHERE unique_id = :id1 ");
+      $stmt->bindValue(":id1", $id1);
+      $stmt->execute();
+      $result = $stmt->fetchAll();
+      return json_decode($result[0]['tags']);
+    }
+    public static function getSvg($intrest){
+      $conn = Db::getInstance();
+      $stmt = $conn->prepare("SELECT * FROM intrest WHERE intrest = :intrest");
+      $stmt->bindParam(":intrest", $intrest);
+      $stmt->execute();
+      $result = $stmt->fetchAll();
+      return $result;
+  }
+
 
     
 

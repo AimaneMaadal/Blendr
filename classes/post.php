@@ -77,6 +77,15 @@ class Post{
         $stmt->bindParam(":description", $description);
         $stmt->execute();
     }
+    // update users by post id
+    public static function updateUsers($post_id, $users){
+        $conn = Db::getInstance();
+        $stmt = $conn->prepare("UPDATE posts SET users = :users WHERE id = :post_id");
+        $stmt->bindParam(":post_id", $post_id);
+        $stmt->bindParam(":users", $users);
+        $stmt->execute();
+    }
+
 
 
 

@@ -56,6 +56,9 @@ var_dump($usersTag[0]['match_id']);
             font-weight: 600;
             padding: 10px 11px;
         }
+        input[type=checkbox]{
+            float: right;
+        }
         .postBtn{
             width: 115px;
             height: 21px;
@@ -77,20 +80,42 @@ var_dump($usersTag[0]['match_id']);
         .submenu i{
             color: #FF7A00;
         }
+        .user{
+            width: 80%;
+            margin-top: 27px;
+        }
+        .user img{
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            float: left;
+        }
+        .user p{
+            margin-left: 50px;
+            margin-top: 10px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #001F3C;
+            display: block;
+        }
        
     </style>
 </head>
 <body>
     <div class="wrapper">
         <div class="topHeader"> 
-            <a href="addPost.php">Back</a>
-            <input type="submit" name="submit" class="postBtn" value="Plaats op feed">
+            <input type="button" id="back" value="back"></input>
+           
         </div>
         <input type="text" name="gebruiker" value="zoek gebruiker"></input>
         <?php
         foreach ($usersTag as $user) {
             $userInfo = user::getUserById($user['match_id']);
-            echo $user['match_id']."<br>";
+            echo "<div class='user'>";
+            echo '<img class="profilePicPost" id="profilePicture" src="../php/images/' .$userInfo[0]["img"]. '" alt="">'; 
+            echo "<p>" .$userInfo[0]["fname"]." ".$userInfo[0]["lname"]."</p>";
+            echo '<input data-id="'.$userInfo[0]["unique_id"].'" type="checkbox" id="checkbox" />';
+            echo '</div>';               
         }
 
 
@@ -110,14 +135,51 @@ var_dump($usersTag[0]['match_id']);
             </div>
         </div>  
     </div>
-  
-
-
 </body>
 
 
 <script>
+    var z = ["<?php echo $_SESSION["unique_id"] ?>"];
+    $(document).on("change","#checkbox",function(){
+        if ($(this).is(':checked')) {
+            if (z.length < 3) {
+                z.push($(this).data("id"));
+            }
+            else{
+                alert("You can only select 3 users");
+                $(this).prop("checked", false);
+            }
+        }
+        else {
+            z.splice(z.indexOf($(this).data("id")), 1);
+        }
+        console.log(z);
 
+
+
+    });
+    $(document).on("click","#back",function(){
+        if (z == "") {
+        alert("cant be empty");  
+    }
+    else{
+        const myJSON = JSON.stringify(z);
+        const id = <?php echo $_GET["postId"]; ?>;
+        alert(myJSON);
+        $.ajax({
+            url: "ajax/add_users.php",
+            type: "POST",
+            data: {
+                users: myJSON,
+                postId: id
+            },
+            success: function(data){
+                console.log(data);
+                window.location.href = "addPostDescription.php?postId=<?php echo $_GET["postId"]; ?>";
+            }
+        });
+    }
+    });
 
 </script>    
 </body>

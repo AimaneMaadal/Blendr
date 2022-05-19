@@ -96,21 +96,44 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
             margin: -22px 0px 0px 257px;
             float: left;
         }
-        .menu {
-            float: left;
-            margin: -85px 0px 0px -142px;
+
+        header{      
+            margin-top: 49px;
+            margin-bottom: 70px;
         }
+        .bottomNav{
+    position: fixed;
+    background-color: rgb(255, 255, 255);
+    bottom: 80px;
+    width: 330px;
+    height: 50px;
+    border-radius: 10px;
+    z-index: 5;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.bottomNav div{
+    width: 25px;
+    height: 25px;
+}
+.bottomNav div img{
+    width: 25px;
+    height: 25px;
+}
     </style>    
 <body>
 <div class="wrapper">
 <header>
-<img src="../php/images/vector.svg" alt="logo" class="menu">
+<img src="../php/icons/vector.svg" alt="logo" class="menu">
 <?php echo'<img class="profilePic" id="profilePicture" data-id="'.$_SESSION["unique_id"].'" src="../php/images/' .$data[0]['img']. '" alt="">'; ?>
-        <div class="content">
-        <!-- <a href="php/logout.php?logout_id=<?php echo $_SESSION['unique_id'] ?>" class="logout">Logout</a> -->
-    </header>
+
+<div class="content">   <!-- <a href="php/logout.php?logout_id=<?php echo $_SESSION['unique_id'] ?>" class="logout">Logout</a> -->
+</header>
+
         <div class="pop_up"><div><i class="fa-solid fa-crown fa-2xl" style="width:100%"></i></div><h3>Upgrade naar premium</h3><p>Ontmoet nieuwe mensen</p><i class="fa-solid fa-xmark fa-xl"></i></div>
-    <div id="stacked-cards-block" class="stackedcards stackedcards--animatable init">
+    <div id="stacked-cards-block" class="stackedcards stackedcards--animatable init" onClick="redirect()">
   <div class="stackedcards-container">
     <?php foreach($data as $row){ 
         $lat2 = json_decode($row['geo'])[0];
@@ -136,21 +159,24 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
 </div>
 <div class="global-actions">
   <div class="left-action">Left</div>
-  <div class="top-action" id="topButton"><img src="../php/images/pot.svg"></img></div>
+  <div class="top-action" id="topButton"><img src="../php/icons/pot.svg"></img></div>
   <div class="right-action">Right</div>
 </div>
 
 
-
+<div class="bottomNav">
+    <div><img src="../php/icons/home.svg"></div>
+    <div><img src="../php/icons/Recepeten.svg"></div>
+    <div><img src="../php/icons/match_fill.svg"></div>
+    <div><img src="../php/icons/chat.svg"></div>
+</div>
 
 
 <script>
 
     // JavaScript Document
 document.addEventListener("DOMContentLoaded", function(event) {
-
-
-    
+ 
 function stackedCards () {
 
     var stackedOptions = 'Top'; //Change stacked cards view from 'Bottom', 'Top' or 'None'.
@@ -177,6 +203,11 @@ function stackedCards () {
     var Userlenght = UsersArr.length;
 
     
+    function redirect(){
+        window.location.href = "profilepage.php?id="+UsersArr[counter];
+    }
+    document.getElementById("stacked-cards-block").addEventListener("click", redirect);  
+
     obj = document.getElementById('stacked-cards-block');
     stackedCardsObj = obj.querySelector('.stackedcards-container');
     listElNodesObj = stackedCardsObj.children;
@@ -282,7 +313,8 @@ function stackedCards () {
             }
         }
     };
-    
+
+
     // Usable functions
     function countElements() {
         maxElements = listElNodesObj.length;

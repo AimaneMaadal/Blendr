@@ -8,9 +8,10 @@ session_start();
 <html>
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>How to capture picture from webcam with Webcam.js</title>
+    <title>Camera</title>
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/webcamjs/1.0.25/webcam.min.js"></script>
+	<script src="https://kit.fontawesome.com/6ec6696b28.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="feed.css">
     <link rel="stylesheet" href="../style.css">
 	
@@ -23,7 +24,7 @@ session_start();
 	#results{
         width: 320px;
         height: 240px;
-		margin-top: 150px;
+		margin-top: 57px;
 		border-radius: 10px;
     }
 	#my_camera video{
@@ -61,12 +62,12 @@ session_start();
 </head>
 <body onload="configure()">
 
-	<!-- CSS -->
-
-
-	<!-- -->
 <div class="wrapper">
-	<input type=button value="Save Snapshot" onClick="saveSnap()">
+<div class="topHeader">
+        <div><i class="fa-solid fa-chevron-left fa-lg">&nbsp&nbsp&nbsp&nbsp&nbsp</i><b>Camera</b> </div>
+        <div><label><i class="fa-solid fa-arrow-right fa-lg" style="color: #F0A500;"></i><input type=button value="Save Snapshot" onClick="saveSnap()" style="display: none;"></label></div>
+    </div>  
+	
 	<div id="results">
 		
 	</div>	
@@ -127,7 +128,9 @@ session_start();
 			 Webcam.upload( base64image, 'ajax/camera_image.php', function(code, text) {
 				 console.log('Save successfully');
 				 console.log(text);
+				 window.location.href = "addPostDescription.php?postId="+text;
             });
+
 
 		}
 	</script>

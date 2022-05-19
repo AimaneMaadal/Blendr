@@ -9,6 +9,7 @@ $postId = $_GET['postId'];
 if (isset($_POST['submit'])) {
     $description = $_POST['postDescription'];
     post::updateDescription($postId, $description);
+    header('Location: index.php');
 }
 
 
@@ -107,7 +108,7 @@ $post = Post::getPostById($postId)[0];
                 <a href="#"><i class="fa-solid fa-image fa-xl"></i></a>
             </div>
             <div class="submenuItem">
-                <a href="addPostTags.php?postId=62#"><i class="fa-solid fa-people-group fa-xl"></i></a>
+                <?php echo  '<a href="addPostTags.php?postId='.$_GET["postId"].'"><i class="fa-solid fa-people-group fa-xl"></i></a>'; ?>      
             </div>
             <div class="submenuItem">
                 <a href="#"><i class="fa-solid fa-location-dot fa-xl"></i></a>
