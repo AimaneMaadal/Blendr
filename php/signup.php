@@ -61,6 +61,6 @@
             echo "$email is not a valid email!";
         }
     }else{
-        echo "All input fields are required!".$geo;
+        echo "All input fields are required!";
     }
 ?>

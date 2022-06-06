@@ -48,16 +48,15 @@
 <body onload="getLocation()">
   <div class="wrapper">
     <section class="form signup">
-      <h1>Registreren</h1>
-      <p>Maak een account zodat je kunt matchen met mensen van verschillende culturen en dezelfde intresses.</p>
+      <h1>Sign up</h1>
+      <img src="../php/icons/step1.svg" style="width: 100%;margin: 20px 0px 20px -5px;">
+      <p>Create an account so you can match with people of different cultures and the same interests.</p>
       <form action="#" method="POST" enctype="multipart/form-data" autocomplete="off">
         <div class="field image">
           <label>
             <img src="../php/images/placeholder-removebg-preview.png" id="profilePic" class="profilePic"></img><input type="file" onchange="document.getElementById('profilePic').src = window.URL.createObjectURL(this.files[0])" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
-            <img src="../php/icons/add.svg" style="margin: -230px 0px 0px 160px; width: 12%">
-            
-          </label>
-          
+            <img src="../php/icons/add.svg" style="margin: -230px 0px 0px 160px; width: 12%">  
+          </label> 
         </div>
         <div class="name-details">
           <div class="field input">

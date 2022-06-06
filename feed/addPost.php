@@ -114,55 +114,55 @@ if(!empty($_POST['uploadImageSelect'])){
             margin-top: 7px;
         }
         .image1:nth-child(1) {
-            background-image: url("../php/images/food1.jfif");
+            background-image: url("../php/images/posts/post1.jpg");
             width: 100%;
             height: 200px;
             display: block;
         }
         .image1:nth-child(2) {
-            background-image: url("../php/images/food2.jfif");
+            background-image: url("../php/images/posts/post2.jpg");
         }
         .image1:nth-child(3) {
-            background-image: url("../php/images/food6.jfif");
+            background-image: url("../php/images/posts/post3.jpg");
         }
         .image1:nth-child(4) {
-            background-image: url("../php/images/food4.jpg");
+            background-image: url("../php/images/posts/post4.jpg");
         }
         .image1:nth-child(5) {
-            background-image: url("../php/images/food5.jpg");
+            background-image: url("../php/images/posts/post5.jpg");
         }
         .image1:nth-child(6) {
-            background-image: url("../php/images/food2.jfif");
+            background-image: url("../php/images/posts/post6.jpg");
         }
         .image1:nth-child(7) {
-            background-image: url("../php/images/food2.jfif");
+            background-image: url("../php/images/posts/post7.jpg");
         }
         .image1:nth-child(8) {
-            background-image: url("../php/images/food6.jfif");
+            background-image: url("../php/images/posts/post8.jpg");
         }
         .image1:nth-child(9) {
-            background-image: url("../php/images/food4.jpg");
+            background-image: url("../php/images/posts/post9.jpg");
         }
         .image1:nth-child(10) {
-            background-image: url("../php/images/food5.jpg");
+            background-image: url("../php/images/posts/post10.jpg");
         }
         .image1:nth-child(11) {
-            background-image: url("../php/images/food6.jfif");
+            background-image: url("../php/images/posts/post11.jpg");
         }
         .image1:nth-child(12) {
-            background-image: url("../php/images/food4.jpg");
+            background-image: url("../php/images/posts/post12.jpg");
         }
         .image1:nth-child(13) {
-            background-image: url("../php/images/food5.jpg");
+            background-image: url("../php/images/posts/post13.jpg");
         }
         .image1:nth-child(14) {
-            background-image: url("../php/images/food6.jfif");
+            background-image: url("../php/images/posts/post14.jpg");
         }
         .image1:nth-child(15) {
-            background-image: url("../php/images/food4.jpg");
+            background-image: url("../php/images/posts/post15.jpg");
         }
         .image1:nth-child(16) {
-            background-image: url("../php/images/food5.jpg");
+            background-image: url("../php/images/posts/post16.jpg");
         }
 
 
@@ -215,22 +215,22 @@ if(!empty($_POST['uploadImageSelect'])){
         <div><label><i class="fa-solid fa-arrow-right fa-lg" style="color: #F0A500;"></i><input type="button" id="uploadImageDone" name="submit" value="Volgende" style="display: none;"></label></div>
     </div>  
         <div class="food">
-            <input type="button" data-id="food1.jfif" id="uploadImage" class="image1"></input>
-            <input type="button" data-id="food2.jfif" id="uploadImage" class="image1"></input>
-            <input type="button" data-id="food6.jfif" id="uploadImage" class="image1"></input>
-            <input type="button" data-id="food5.jpg" id="uploadImage" class="image1"></input>
-            <input type="button" data-id="food2.jfif" id="uploadImage" class="image1"></input>
-            <input type="button" data-id="food2.jfif" id="uploadImage" class="image1"></input>
-            <input type="button" data-id="food2.jfif" id="uploadImage" class="image1"></input>
-            <input type="button" data-id="food6.jfif" id="uploadImage" class="image1"></input>
-            <input type="button" data-id="food4.jpg" id="uploadImage" class="image1"></input>
-            <input type="button" data-id="food5.jpg" id="uploadImage" class="image1"></input>
-            <input type="button" data-id="food1.jfif" id="uploadImage" class="image1"></input>
-            <input type="button" data-id="food2.jfif" id="uploadImage" class="image1"></input>
-            <input type="button" data-id="food6.jfif" id="uploadImage" class="image1"></input>
-            <input type="button" data-id="food5.jpg" id="uploadImage" class="image1"></input>
-            <input type="button" data-id="food2.jfif" id="uploadImage" class="image1"></input>
-            <input type="button" data-id="food6.jfif" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="post1.jpg" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="post2.jpg" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="post3.jpg" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="post4.jpg" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="post5.jpg" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="post6.jpg" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="post7.jpg" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="post8.jpg" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="post9.jpg" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="post10.jpg" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="post11.jpg" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="post12.jpg" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="post13.jpg" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="post14.jpg" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="post15.jpg" id="uploadImage" class="image1"></input>
+            <input type="button" data-id="post16.jpg" id="uploadImage" class="image1"></input>
             
             
         </div>

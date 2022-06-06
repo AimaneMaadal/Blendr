@@ -94,15 +94,15 @@ body {
 }
 
 .stackedcards-overlay.top {
-    background: #E38568;
+    background: #FF7A00;
 }
 
 .stackedcards-overlay.right {
-    background: #7BB3C5;
+    background: #F0A500;
 }
 
 .stackedcards-overlay.left {
-    background: #E58D93;
+    background: #f1747c;
 }
 
 .stackedcards-overlay.left:empty,

@@ -5,7 +5,7 @@
     header("location: http://localhost/blendr2.0/match.php");
   }
   
-  $data = User::getAllUsers();
+  $data = User::getAllUsersMatch($_SESSION['unique_id']);
 
 
 
@@ -44,7 +44,16 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
   }
 
   //var_dump($usersNew);
+  function getAddress($latitude, $longitude)
+{
+        //google map api url
+        $url = "https://api.bigdatacloud.net/data/reverse-geocode-client?latitude=$latitude&longitude=$longitude&localityLanguage=nl";
 
+        // send http request
+        $geocode = file_get_contents($url);
+        $json = json_decode($geocode, true);
+        return $json['locality'];
+}
 
 ?>
 <?php include_once "../header.php"; ?>
@@ -64,11 +73,18 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
         }
         .pop_up{
             background-color: #FFE6AE;
-            margin-bottom: 58px;
-            margin-top: -53px;
+            margin-bottom: 47px;
+            margin-top: -33px;
             width: 75%;
             height: 54px;
             border-radius: 16px;
+        }
+        .profilePic {
+            width: 45px;
+            height: 45px;
+            border-radius: 425px;
+            margin-left: 200px;
+            margin-bottom: -10px;
         }
         .pop_up>div{
             background-color: white;
@@ -122,11 +138,48 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
     width: 25px;
     height: 25px;
 }
+.sidenav {
+    height: 907px;
+    width: 0;
+    position: absolute;
+    z-index: 10;
+    top: 0;
+    left: 0;
+    background-color: #FF7A00;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+    display: flex;
+    /* text-align: center; */
+    flex-direction: column;
+    gap: 40px;
+}
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+    color: white;
+}
+.sidenav a {
+    margin-left: 50px;
+    color: white;
+    font-weight: 600;
+}
     </style>    
 <body>
 <div class="wrapper">
+<div id="mySidenav" class="sidenav">
+  <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+  <a href="#">Profile</a>
+  <a href="#">Matches</a>
+  <a href="#">offer and promo</a>
+  <a href="#">Privacy policy</a>
+  <a href="../php/logout.php?logout_id=<?php echo $_SESSION['unique_id'] ?>">Uitloggen</a>
+</div>
 <header>
-<img src="../php/icons/vector.svg" alt="logo" class="menu">
+<img src="../php/icons/vector.svg" onclick="openNav()" alt="logo" class="menu">
 <?php echo'<img class="profilePic" id="profilePicture" data-id="'.$_SESSION["unique_id"].'" src="../php/images/' .$data[0]['img']. '" alt="">'; ?>
 
 <div class="content">   <!-- <a href="php/logout.php?logout_id=<?php echo $_SESSION['unique_id'] ?>" class="logout">Logout</a> -->
@@ -136,45 +189,58 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
     <div id="stacked-cards-block" class="stackedcards stackedcards--animatable init" onClick="redirect()">
   <div class="stackedcards-container">
     <?php foreach($data as $row){ 
+
         $lat2 = json_decode($row['geo'])[0];
         $long2 = json_decode($row['geo'])[1];
-        $img = "../php/images/".json_decode($row["showcase"])[0];            
-        echo '<div class="card-item" style="background-image:url(\'' .$img. '\'); background-position: center;  background-size: cover;" ><a href="profilepage.php?id='.$row["unique_id"].'">oo</a>
-            <div class="card-inner" onclick="link()"><a href="profilepage.php?id='.$row["user_id"].'">
+          
+        if (!is_null($row['showcase'])) {
+            $img = "../php/images/show/".json_decode($row["showcase"])[0];  
+            echo '<div class="card-item" style="background-image:url(\'' .$img. '\'); background-position: center;  background-size: cover;" ><a href="profilepage.php?id='.$row["unique_id"].'">oo</a>
+            <div class="card-inner" onclick="link()">
                 <img data-id="'.$row["user_id"].'" src="../php/images/' .$row["img"]. '" alt="" id="profilePicture2">
                 <div class="userInfo">
-                <h3>' .$row["fname"].' '.distance($lat1, $long1, $lat2, $long2, "K").'km</h3>
-                Mechelen
-                </a></div>
+                <h3>' .$row["fname"].'</h3>
+                '.getAddress($lat2, $long2).'
+                </div>
+                <div style="float: right;margin: 15px 15px;padding: 2px 5px;background-color: #FF7A00;color: white;border-radius: 3px;font-weight: 20px;font-weight: 700;/* border: 18px; */">'.distance($lat1, $long1, $lat2, $long2, "K").'km</div>
             </div>
         </div>';
+        }        
+
     } 
     ?>
     
   </div>
  
-  <div class="stackedcards--animatable stackedcards-overlay top">TOP</div>
-  <div class="stackedcards--animatable stackedcards-overlay right">RIGHT</div>
-  <div class="stackedcards--animatable stackedcards-overlay left">LEFT</div>
+  <div class="stackedcards--animatable stackedcards-overlay top">Match</div>
+  <div class="stackedcards--animatable stackedcards-overlay right">Like</div>
+  <div class="stackedcards--animatable stackedcards-overlay left">Next time</div>
 </div>
 <div class="global-actions">
-  <div class="left-action">Left</div>
+  <div class="left-action"><img src="../php/icons/like.svg"></img></div>
   <div class="top-action" id="topButton"><img src="../php/icons/pot.svg"></img></div>
-  <div class="right-action">Right</div>
+  <div class="right-action"><img src="../php/icons/dislike.svg"></img></div>
 </div>
 
 
 <div class="bottomNav">
-    <div><img src="../php/icons/home.svg"></div>
-    <div><img src="../php/icons/Recepeten.svg"></div>
+    <div><a href="../feed/index.php"><img src="../php/icons/home.svg"></a></div>
+    <div><a href="../recipes/index.php"><img src="../php/icons/Recepeten.svg"></a></div>
     <div><img src="../php/icons/match_fill.svg"></div>
-    <div><img src="../php/icons/chat.svg"></div>
+    <div><a href="../users.php"><img src="../php/icons/chat.svg"></a></div>
 </div>
 
 
 <script>
 
-    // JavaScript Document
+function openNav() {
+  document.getElementById("mySidenav").style.width = "100%";
+}
+
+function closeNav() {
+  document.getElementById("mySidenav").style.width = "0";
+}
+
 document.addEventListener("DOMContentLoaded", function(event) {
  
 function stackedCards () {
@@ -393,7 +459,7 @@ function stackedCards () {
     function onSwipeLeft() {
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function() {
-            alert(this.responseText);
+            //alert(this.responseText);
         }
         xhttp.open("GET", "ajax/add_match.php?id="+document.getElementById('profilePicture').getAttribute('data-id')+"&id2="+UsersArr[counter]+"&like=0", true);
         xhttp.send();
@@ -415,7 +481,7 @@ function stackedCards () {
     function onSwipeRight() {
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function() {
-            alert(this.responseText);
+            //alert(this.responseText);
         }
         xhttp.open("GET", "ajax/add_match.php?id="+document.getElementById('profilePicture').getAttribute('data-id')+"&id2="+UsersArr[counter]+"&like=1", true);
         xhttp.send();
@@ -438,7 +504,7 @@ function stackedCards () {
     function onSwipeTop() {
         const xhttp = new XMLHttpRequest();
         xhttp.onload = function() {
-            alert(this.responseText);
+            //alert(this.responseText);
         }
         xhttp.open("GET", "ajax/add_match.php?id="+document.getElementById('profilePicture').getAttribute('data-id')+"&id2="+UsersArr[counter]+"&like=2", true);
         xhttp.send();

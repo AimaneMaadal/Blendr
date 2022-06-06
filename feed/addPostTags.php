@@ -19,7 +19,7 @@ $usersTag = user::getAllMatches($_SESSION['unique_id']);
 
 
 // var_dump(toArray($usersTag));
-var_dump($usersTag[0]['match_id']);
+// var_dump($usersTag[0]['match_id']);
 //var_dump($post["post_img"]);
  
 ?>
@@ -70,12 +70,19 @@ var_dump($usersTag[0]['match_id']);
             color: #fff;
             font-weight: 600;
         }
-        .submenu{
+        .submenu {
             display: flex;
-            width: 80%;
+            width: 100%;
             flex-direction: row;
             justify-content: space-around;
-            margin-top: 27px;
+            position: sticky;
+            bottom: 0px;
+            bottom: 10;
+            background-color: #F2F2F2;
+            align-items: center;
+            height: 60px;
+            border-radius: 10px;
+            padding: 32px 10px;
         }
         .submenu i{
             color: #FF7A00;

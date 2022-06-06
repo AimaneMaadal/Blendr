@@ -1,4 +1,5 @@
 <?php
+include_once "../../classes/user.php"; 
 session_start();
 if (isset($_SESSION['unique_id'])) {
 } else {
@@ -20,6 +21,7 @@ if (isset($_SESSION['unique_id'])) {
     <title>Recipes</title>
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="style.css">
+    
 </head>
 
 <body>
@@ -39,13 +41,14 @@ if (isset($_SESSION['unique_id'])) {
             $recipe = $stmt->fetch(PDO::FETCH_ASSOC);
 
 
-
+            $userFname = user::getUserById($recipe['maker'])[0]['fname'];
+           
             ?>
             <!-- make go back button -->
             <div class="back"><a href="../index.php"><i class="fa-solid fa-angle-left"></i></a></div>
             <header>
                 <?php $recipeImg = $recipe['img'];
-                echo  "<img src=$recipeImg>" ?>
+                echo  "<img src=../../php/images/recepis/$recipeImg>" ?>
                 <h6><?php echo $recipe['origin']; ?></h6>
                 <h2><?php echo $recipe['name']; ?></h2>
 
@@ -88,15 +91,19 @@ if (isset($_SESSION['unique_id'])) {
 
                     <?php
                     $tags = json_decode($recipe['tags']);
-                    foreach ($tags as $tag) {
-                        echo "<span>" . $tag . "</span> ";
+                    if (is_array($tags)) {
+                        foreach ($tags as $tag) {
+                            echo "<span>" . $tag . "</span> ";
+                        }
                     }
+
+      
                     ?>
 
                 </div>
 
                 <div class="maker">
-                    <?php echo "Recept maker: " . $recipe['maker']; ?>
+                    <?php echo "Recept maker: " . $userFname; ?>
                 </div>
                 <div class="description">
                     <?php echo $recipe['description']; ?>
@@ -110,12 +117,15 @@ if (isset($_SESSION['unique_id'])) {
                     foreach ($ingredients as $ingredient) {
                         echo "  <div class='ingBox'>
                         
-                       <span>" . $ingredient . "</span>
+                       <span style='background-image: url(../../php/images/recepis/ingredients/".$ingredient.".png);background-size: 90%;background-position: center;background-repeat: no-repeat;''>" . $ingredient . "</span>
                        
                        </div>";
                     }
                     ?>
+                    
                 </div>
+                <button class="submitBtn"><a href="https://www.ah.be/producten" style='color: white;'>Add to shopping list</a></button>
+          
 
             </main>
 

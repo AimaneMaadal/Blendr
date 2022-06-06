@@ -7,6 +7,22 @@ class User{
     private $name;
     private $email;
 
+    //public static function that gets all users except user id session id
+    public static function getAllUsersMatch($id){
+      $conn = Db::getInstance();
+      $stmt = $conn->prepare("SELECT * FROM `users` WHERE `unique_id` != $id;");
+      $stmt->execute();
+      $result = $stmt->fetchAll();
+      return $result;
+    }
+    public static function getAllMatch($id){
+      $conn = Db::getInstance();
+      $stmt = $conn->prepare("SELECT * FROM `matches` WHERE `match_id` = $id;");
+      $stmt->execute();
+      $result = $stmt->fetchAll();
+      return $result;
+  }
+
     
     //public static function that gets firstname from all users
     public static function getAllUsers(){
@@ -69,7 +85,7 @@ class User{
       $result = $stmt->fetchAll();
       return json_decode($result[0]['tags']);
     }
-    public static function getSvg($intrest){
+    public static function getEmoji($intrest){
       $conn = Db::getInstance();
       $stmt = $conn->prepare("SELECT * FROM intrest WHERE intrest = :intrest");
       $stmt->bindParam(":intrest", $intrest);

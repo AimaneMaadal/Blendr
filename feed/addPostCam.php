@@ -50,7 +50,7 @@ session_start();
 	.retake{
 		padding: 5px 22px;
 		position: absolute;
-		bottom: 389px;
+		bottom: 433px;
 		display: block;
 		background-color: #FF7A00;
 		border: none;

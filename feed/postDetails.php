@@ -65,28 +65,115 @@
     <link rel="stylesheet" href="../style.css">
     <script src="https://kit.fontawesome.com/6ec6696b28.js" crossorigin="anonymous"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <style>
+        .leftInner {
+            height: 40px;
+            float: left;
+            width: 20%;
+        }
+        .rightInner {
+            display: flex;
+            width: 70%;
+            flex-direction: column;
+        }
+        .postTitle{
+            display: flex;
+            width: 120%;
+        }
+        .postInfo {
+            display: block;
+            margin-bottom: 10px;
+            margin-top: 30px;
+            flex-direction: row;
+        }
+        .topHeader {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 80%;
+            margin: 0px auto;
+            margin-top: 50px;
+        }
+        #commentInput{
+            position: sticky;
+            bottom: 21px;
+            width: 75.2%;
+            padding: 11.5px 10px;
+            /* border-radius: 10px; */
+            border: none;
+            background: gainsboro;
+            float: left;
+            border-radius: 10px 0px 0px 10px;
+            width: 84.9%;
+        }
+        #commentButton{
+            position: sticky;
+            float: right;
+            bottom: 21px;
+            right: 21px;
+            height: 40px;
+            border-radius: 0px 5px 5px 0px;
+            width: 80px;
+            background-color: #FF7A00;
+            border: none;
+            color: white;
+            margin-top: -40px;
+        }
+        .comment{
+            gap: 10px;
+            display: flex;
+            margin-top: 15px;
+        }
+        #comments{
+            width: 80%;
+            margin-top: 25px;
+            overflow-y: scroll;
+            height: 365px;
+        }
+        .profilePicPost {
+            width: 25px;
+            height: 25px;
+            border-radius: 25px;
+            z-index: 2;
+            float: left;
+            margin-right: 10px;
+        }
+    </style>
 <body>
 <div class="wrapper">
 <div class="topHeader">
-    <img src="../php/icons/vector.svg" alt="logo" class="menuButton">
-    <?php echo'<img class="profilePic" id="profilePicture" data-id="'.$_SESSION["unique_id"].'" src="../php/images/' .$user[0]["img"]. '" alt="">'; ?>
-</div>  
+        <div><a href="index.php"><i class="fa-solid fa-chevron-left"></i></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<b>Post</b></div>
+        <div><?php echo '<img class="profilePicPost" id="profilePicture" src="../php/images/' .User::getUserById($_SESSION["unique_id"])[0]["img"]. '" alt="">'; ?></div>
+</div>   
     <?php
         $usersPost = json_decode($post["users"]);
 
-        echo '<div class="post"><a href="postDetails.php?id='.$post["id"].'">';
+        echo '<div class="post" style="margin-top: 44px;"><a  style="width: 80%;" href="postDetails.php?id='.$post["id"].'">';
+        if (is_array($usersPost)) {
             echo '<div class="postInfo">';
-            for ($i=0; $i < count($usersPost); $i++) { 
-                echo '<img class="profilePicPost" id="profilePicture" src="../php/images/' .User::getUserById($usersPost[$i])[0]["img"]. '" alt="">';
+            echo '<div class="leftInner">';
+            for ($i=0; $i < count($usersPost); $i++) {
+                echo '<img style="margin-right: 10px;" class="profilePicPost" id="profilePicture" src="../php/images/' .User::getUserById($usersPost[$i])[0]["img"]. '" alt="">';
             }
-            for ($i=0; $i < count($usersPost); $i++) { 
-                echo "<h4>".User::getUserById($usersPost[$i])[0]["fname"]."</h4>";  
+            echo '</div>';
+            echo '<div class="rightInner">';
+            echo '<div class="postTitle">';
+            for ($i=0; $i < count($usersPost); $i++) {
+                echo "<h4>".User::getUserById($usersPost[$i])[0]["fname"]."</h4>";
                 if ($i<count($usersPost)-1) {
                     echo "<h4>&nbsp;en&nbsp;</h4>";
                 }
             }
             echo '</div>';
-            echo '<p style="margin: -21px 0px 12px 48px;font-size: 11px;color: grey;font-weight: 500;">'.time_elapsed_string($post["date"]).'</p>';
+            echo '<p style="margin-top: -19px;font-size: 10px;color: #858585;">'.time_elapsed_string($post["date"]).'</p>';
+            
+        }
+        else {
+            echo '<img class="profilePicPost" id="profilePicture" src="../php/images/' .User::getUserById($usersPost)[0]["img"]. '" alt="">';
+            echo "<div class='rightInner' style='margin-left: 20px;'><h4 style='height: 15px;'>".User::getUserById($usersPost)[0]["fname"].' '.User::getUserById($usersPost)[0]["lname"]."</h4>";  
+            echo '<p style="font-size: 10px; color: #858585;">'.time_elapsed_string($post["date"]).'</p></div>';
+        }
+        echo '</div>';
         echo '<img class="postImg" src="../php/images/' .$post["post_img"]. '" alt="">';
         if (post::checkIfUserLikedPost($_SESSION["unique_id"], $post["id"])) {
             echo '<input type="button" data-id="'.$post["id"].'" id="likeButton" class="liked">';
@@ -94,7 +181,8 @@
         else{
             echo '<input type="button" data-id="'.$post["id"].'" id="likeButton" class="disliked">';
         }
-        echo '</a></div>';
+        echo '<input type="button" data-id="'.$post["id"].'" id="likeButton" class="share">';
+        echo '</a>';
     ?>
     <div id="comments">
 
@@ -102,16 +190,16 @@
             $comments = post::getCommentsByPostId($post["id"]);
             for ($i=0; $i < count($comments); $i++) { 
                 echo '<div class="comment">';
-                echo '<img class="profilePicComment" style="width: 30px;height: 30px;" id="profilePicture" src="../php/images/' .User::getUserById($comments[$i]["userId"])[0]["img"]. '" alt="">';
-                echo '<p>'.User::getUserById($comments[$i]["userId"])[0]["fname"].'</p>';
+                echo '<img class="profilePicComment" style="width: 30px;height: 30px;border-radius: 20px;" id="profilePicture" src="../php/images/' .User::getUserById($comments[$i]["userId"])[0]["img"]. '" alt="">';
                 echo '<p>'.$comments[$i]["comment"].'</p>';
                 echo '</div>';
             }
         ?>
+    </div>
+    <div class="commentInput" style="width: 80%;">
         <input type="text" id="commentInput" placeholder="Add a comment...">
         <input type="button" id="commentButton" value="Comment">
     </div>
-
 
 </div>
 </div>

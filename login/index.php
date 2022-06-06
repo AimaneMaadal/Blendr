@@ -9,8 +9,9 @@
 <?php include_once "header.php"; ?>
 <body>
   <div class="wrapper">
-    <section class="form login">
-      <header>Blendr</header>
+    <section class="form login"><br><br><br><br><br><br><br><br>
+      <header>Login</header>
+      <p>Login in with your information and start looking for your next match!</p><br><br>
       <form action="#" method="POST" enctype="multipart/form-data" autocomplete="off">
         <div class="error-text"></div>
         <div class="field input">
