@@ -7,8 +7,8 @@
   
   $data = User::getAllUsersMatch($_SESSION['unique_id']);
 
-
-
+  $user = User::getuserById($_SESSION['unique_id']);
+  $profilePic = $user[0]['img'];
 
 // echo $_SESSION['unique_id'];
 
@@ -180,8 +180,8 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
 </div>
 <header>
 <img src="../php/icons/vector.svg" onclick="openNav()" alt="logo" class="menu">
-<?php echo'<img class="profilePic" id="profilePicture" data-id="'.$_SESSION["unique_id"].'" src="../php/images/' .$data[0]['img']. '" alt="">'; ?>
 
+<img src="../php/images/<?php echo $profilePic ?>" alt="profile" class="profilePic">
 <div class="content">   <!-- <a href="php/logout.php?logout_id=<?php echo $_SESSION['unique_id'] ?>" class="logout">Logout</a> -->
 </header>
 
