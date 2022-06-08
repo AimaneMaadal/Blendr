@@ -7,8 +7,8 @@
   
   $data = User::getAllUsersMatch($_SESSION['unique_id']);
 
-  $user = User::getuserById($_SESSION['unique_id']);
-  $profilePic = $user[0]['img'];
+  $LoggedInUser = User::getuserById($_SESSION['unique_id']);
+  $profilePic = $LoggedInUser[0]['img'];
 
 // echo $_SESSION['unique_id'];
 
@@ -68,9 +68,9 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
     <link rel="stylesheet" href="../style.css">
     <script src="https://kit.fontawesome.com/6ec6696b28.js" crossorigin="anonymous"></script>
     <style>
-        .card-item{
-            /* background-image: url("../php/images/food2.jfif"); */
-        }
+        /* .card-item{
+            background-image: url("../php/images/food2.jfif"); 
+        } */
         .pop_up{
             background-color: #FFE6AE;
             margin-bottom: 47px;
@@ -181,7 +181,7 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
 <header>
 <img src="../php/icons/vector.svg" onclick="openNav()" alt="logo" class="menu">
 
-<img src="../php/images/<?php echo $profilePic ?>" alt="profile" class="profilePic">
+<img src="../php/images/<?php echo $profilePic ?>" alt="profile" class="profilePic" id="profilePicture" data-id="'.$_SESSION["unique_id"].'">
 <div class="content">   <!-- <a href="php/logout.php?logout_id=<?php echo $_SESSION['unique_id'] ?>" class="logout">Logout</a> -->
 </header>
 
