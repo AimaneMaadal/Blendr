@@ -61,6 +61,7 @@
             font-family: 'Source Sans Pro';
             font-weight: bold;
             color: #FF7A00;
+            cursor: pointer;
         }
     </style>
 </head>
