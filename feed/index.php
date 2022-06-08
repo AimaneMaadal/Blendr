@@ -127,9 +127,13 @@
             <?php echo'<img class="profilePic" id="profilePicture" data-id="'.$_SESSION["unique_id"].'" src="../php/images/' .$user[0]["img"]. '" alt="">'; ?>
         </div>  
             <?php
+            
+            $data = array_reverse($data);
             foreach($data as $post){
+                
                 $usersPost = json_decode($post["users"]);
-
+              
+             
                 echo '<div class="post"><a href="postDetails.php?id='.$post["id"].'">';
                     echo '<div class="postInfo">';
                     if(is_array($usersPost)){
