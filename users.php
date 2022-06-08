@@ -101,7 +101,7 @@
     </section>
     <div class="bottomNav">
           <div><a href="feed/index.php"><img src="php/icons/home.svg"></a></div>
-          <div><a href="recepis/index.php"><img src="php/icons/Recepeten.svg"></a></div>
+          <div><a href="recipes/index.php"><img src="php/icons/Recepeten.svg"></a></div>
           <div><a href="match/index.php"><img src="php/icons/match.svg"></a></div>
           <div><a href="users.php"><img src="php/icons/chat_fill.svg"></a></div>
         </div>
