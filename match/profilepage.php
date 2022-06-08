@@ -233,15 +233,26 @@ function getEmoji($emoji){
 <body>
 <div class="wrapper">
     
-   
+<!-- echo json_decode($data["showcase"])[0];
+        $img = "../php/images/show/".json_decode($data["showcase"])[0];     
+        echo '<div class="banner" style="background-image:url(\'' .$img. '\'); background-position: center;  background-size: cover;" >ok</div>'; -->
 
     <?php
-        echo json_decode($data["showcase"])[0];
-        $img = "../php/images/show/".json_decode($data["showcase"])[0];     
-        echo '<div class="banner" style="background-image:url(\'' .$img. '\'); background-position: center;  background-size: cover;" >ok</div>';
-       ?>
+       //check if $data is not null
+        if($data != null){
+          //check if $data["showcase"] is not null
+          if($data["showcase"] != null){
+            //check if $data["showcase"] is not empty
+            if(!empty($data["showcase"])){
+              echo json_decode($data["showcase"])[0];
+              $img = "../php/images/show/".json_decode($data["showcase"])[0];     
+              echo '<div class="banner" style="background-image:url(\'' .$img. '\'); background-position: center;  background-size: cover;" >ok</div>';
+            }
+          }
+        }
+            
+    ?>
 <div class="global-actions">
- <!-- link back -->
 
       <a href="./index.php">
       <div class="left-action"><img src="../php/icons/like.svg"></img></div>
