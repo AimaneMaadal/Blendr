@@ -16,7 +16,7 @@
     input {
         height: 45px;
         border: none;
-        color: red;
+        color: #FF7A00;
         font-size: 17px;
         background: #ffffff;
         border-radius: 15px;
@@ -37,7 +37,7 @@
 <body>
   <div class="wrapper">
       
-        <input type="button"  onclick="location.href='login/signup.php';"  name="submit" value="Volgende">
+        <input type="button"  onclick="location.href='login/startup.php';"  name="submit" value="Volgende">
   </div>
 
   
