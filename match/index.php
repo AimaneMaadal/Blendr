@@ -328,7 +328,7 @@ function closeNav() {
     container.style.left = "0px";
     container.style.zIndex = "0";
     container.style.backgroundColor = "white";
-    container.style.pointerEvents = "auto";
+    container.style.pointerEvents = "all";
     container.style.paddingBottom = "0px";
     container.style.borderRadius = "0px";
     container.style.boxShadow = "none";
