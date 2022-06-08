@@ -52,7 +52,8 @@
       <img src="../php/icons/step1.svg" style="width: 100%;margin: 20px 0px 20px -5px;">
       <p>Create an account so you can match with people of different cultures and the same interests.</p>
       <form action="#" method="POST" enctype="multipart/form-data" autocomplete="off">
-        <div class="field image">
+      <div class="error-text"></div> 
+      <div class="field image">
           <label>
             <img src="../php/images/placeholder-removebg-preview.png" id="profilePic" class="profilePic"></img><input type="file" onchange="document.getElementById('profilePic').src = window.URL.createObjectURL(this.files[0])" name="image" accept="image/x-png,image/gif,image/jpeg,image/jpg" required>
             <img src="../php/icons/add.svg" style="margin: -230px 0px 0px 160px; width: 12%">  
@@ -96,7 +97,7 @@
               }
             echo '</select>';
         ?>
-        <div class="error-text"></div>
+        
           <div class="field button">
           <input type="button" onclick="loadDoc()" name="submit" value="Volgende">
         </div>
