@@ -241,7 +241,13 @@ function getEmoji($emoji){
         echo '<div class="banner" style="background-image:url(\'' .$img. '\'); background-position: center;  background-size: cover;" >ok</div>';
        ?>
 <div class="global-actions">
-  <div class="left-action"><img src="../php/icons/like.svg"></img></div>
+ <!-- link back -->
+
+      <a href="./index.php">
+      <div class="left-action"><img src="../php/icons/like.svg"></img></div>
+      </a>
+
+  
   <div class="top-action" id="topButton"><img src="../php/icons/pot.svg"></img></div>
   <div class="right-action"><img src="../php/icons/dislike.svg"></img></div>
 </div>
