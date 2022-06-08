@@ -164,11 +164,11 @@ $(document).on("click","#uploadImage",function(){
 
 $(document).on("click","#uploadImageDone",function(){
     if (z == "") {
-        alert();  
+        // alert();  
     }
     else{
         const myJSON = JSON.stringify(z);
-        alert(myJSON);
+        // alert(myJSON);
         $.ajax({
             url: "ajax/add_images.php",
             type: "POST",

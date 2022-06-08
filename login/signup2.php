@@ -249,11 +249,11 @@ form {
             });
             $(document).on('click', '.uploadTags', function(e){
                 if (z == "") {
-                    alert("nope");  
+                    // alert("nope");  
                 }
                 else{
                     const myJSON = JSON.stringify(z);
-                    alert(myJSON);
+                    // alert(myJSON);
                     $.ajax({
                         url: "ajax/add_tags.php",
                         type: "POST",
@@ -263,7 +263,7 @@ form {
                             window.location.href = "signup3.php";
                         }
                     });
-                    alert(z);
+                    // alert(z);
                 }
             });
 

@@ -13,7 +13,7 @@ $user = user::getUserById($_SESSION['unique_id']);
 if (isset($_POST['uploadAbout'])) {
     try {
         if (empty($_POST['about'])) {
-            throw new Exception("Please enter your about");
+            $error = "Please enter your about";
         }
         $about = $_POST['about'];
         $sql = "UPDATE `users` SET `bio` = '$about' WHERE `users`.`unique_id` = $id;";
@@ -22,7 +22,7 @@ if (isset($_POST['uploadAbout'])) {
         $stmt->execute();
         header("Location: signup4.php");
     } catch (\Throwable $th) {
-        echo $th->getMessage();
+        $error = $th->getMessage();
     }
 
 }
@@ -88,7 +88,12 @@ if (isset($_POST['uploadAbout'])) {
     <img src="../php/images/<?php echo $user[0]["img"] ?>" class="profilePic">
 
     <form style="width: 80%;" action="" method="POST" enctype="multipart/form-data">
-        <textarea class="aboutInput" placeholder="write something about yourself" name="about"></textarea>
+    <div class="error-text"><?php 
+    if (isset($error)) {
+        echo $error;
+    }
+    ?></div> 
+    <textarea class="aboutInput" placeholder="write something about yourself" name="about"></textarea>
 
        
 
@@ -117,13 +122,13 @@ $(document).on("click","#uploadImage",function(){
 
 $(document).on("click","#uploadImageDone",function(){
     if (z == "") {
-        alert();  
+        // alert();  
     }
     else{
         const myJSON = JSON.stringify(z);
-        alert(myJSON);
+        // alert(myJSON);
         $.ajax({
-            url: "ajax/add_images.php",
+            url: "ajax/add_about.php",
             type: "POST",
             data: {images: myJSON},
             success: function(data){
