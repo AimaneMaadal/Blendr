@@ -75,8 +75,8 @@
             let images = document.querySelectorAll('.intro_img img');
             if (intro_slide < 3) {
                 if(intro_slide==1){
-                    document.querySelector(".intro_text").innerHTML = "Ontmoet mensen in je buurt door <span style='color: #FF7A00'>gerechten</span> en <span style='color: #F1A500'>verhalen</span> te delen";
-                  
+                    document.querySelector(".intro_text").innerHTML = "Meet people in your neighborhood by sharing <span style='color: #FF7A00'>dishes</span>  and  <span style='color: #F1A500'>experiences</span>";
+                    document.querySelector(".intro_info").innerHTML = "Match with people in your area and share stories, recepis and friendship. Get out of your comfortzone and discover new things.";
                     images[0].style.order = "2";
                     images[1].style.order = "1";
                     images[2].style.order = "0";
@@ -84,12 +84,11 @@
                     dots.forEach(dot => {
                         dot.classList.remove('active');
                     });
-               
                     dots[1].classList.add('active');
                 }
                 else if(intro_slide==2){
-                    document.querySelector(".intro_text").innerHTML = "Bekijk, plaats en deel je favoriete <span style='color: #FF7A00'>recepten</span> met alle nodige <span style='color: #F1A500'>ingredieënten</span>";
-                    document.querySelector(".intro_info").innerHTML = "Op de app kan je allerij recepten raadplegen die door gebruikers of door de app word voorzien. Daarnaast kan je de ingredienten zien die de recept nodig en die bij onze partner supermarkt raadplegen";
+                    document.querySelector(".intro_text").innerHTML = "View, post and share your favorite <span style='color: #FF7A00'>recipes</span>  with all necessary  <span style='color: #F1A500'>ingredients</span>";
+                    document.querySelector(".intro_info").innerHTML = "On the app you can consult all the recipes provided by users or by the app. In addition you can see the ingredients that the recipe requires and consult our partner supermarket.";
                     images[0].style.order = "1";
                     images[1].style.order = "0";
                     images[2].style.order = "2";
@@ -112,8 +111,8 @@
         }
     </script>
   <div class="wrapper">
-        <section class="form"><div class="intro_text">Ontmoet mensen met een andere <span style="color: #F1A500">eetcultuur</span> maar met dezelfde <span style="color: #FF7A00">intresses</span></div>
-        <div class="intro_info">Lorem ipsum dolor sit amet consectetur adipisicing elit. Ducimus assumenda maiores quidem soluta nesciunt porro obcaecati sapiente quam qui. Optio architecto totam nemo voluptatem cupiditate perferendis distinctio fugiat libero a?</div>
+        <section class="form"><div class="intro_text">Meet people with different<span style='color: #FF7A00'> food culture</span> but with the same  <span style='color: #F1A500'>interests</span></div>
+        <div class="intro_info">On the app u can match with people based on your differnces of food and culture, but also find people with the same life intrest and meet for the food and stay for the friendship!</div>
         <div class="intro_img"><img src="../php/images/intro/1.png"><img src="../php/images/intro/2.png"><img src="../php/images/intro/3.png"></div>
         <div class="intro_under">
         <div class="intro_dots">
@@ -124,7 +123,5 @@
         <div class="intro_next" onclick="nextSlide()">Next</div></section>
         </div>
   </div>
-
-
 </body>
 </html>

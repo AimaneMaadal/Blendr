@@ -174,7 +174,7 @@
             echo '<p style="font-size: 10px; color: #858585;">'.time_elapsed_string($post["date"]).'</p></div>';
         }
         echo '</div>';
-        echo '<img class="postImg" src="../php/images/' .$post["post_img"]. '" alt="">';
+        echo '<img class="postImg" src="../php/images/posts/'.$post["post_img"]. '" alt="">';
         if (post::checkIfUserLikedPost($_SESSION["unique_id"], $post["id"])) {
             echo '<input type="button" data-id="'.$post["id"].'" id="likeButton" class="liked">';
         }

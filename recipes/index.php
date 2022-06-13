@@ -95,10 +95,10 @@ $user = user::getUserbyId($_SESSION['unique_id']);
 
 
       <ul class="listmenu">
-        <li><a href="index.php" style="font-weight: 700; color: #FF7A00; border-bottom: 4px solid #FF7A00; padding-bottom: 7px;">Recepten</a></li>
-        <li><a href="recipes.php">Ingredienten</a></li>
-        <li><a href="recipes.php">Snacks</a></li>
-        <li><a href="recipes.php">Drinks</a></li>
+        <li><a href="index.php" style="font-weight: 700; color: #FF7A00; border-bottom: 4px solid #FF7A00; padding-bottom: 7px;">Recipes</a></li>
+        <li><a href="#">Ingredients</a></li>
+        <li><a href="#">Snacks</a></li>
+        <li><a href="#">Drinks</a></li>
       </ul> 
    
             <div class="recepis">

@@ -21,7 +21,7 @@ if (isset($_SESSION['unique_id'])) {
     <title>Recipes</title>
     <link rel="stylesheet" href="../../style.css">
     <link rel="stylesheet" href="style.css">
-    
+ 
 </head>
 
 <body>

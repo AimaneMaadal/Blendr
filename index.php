@@ -37,7 +37,7 @@
 <body>
   <div class="wrapper">
       
-        <input type="button"  onclick="location.href='login/startup.php';"  name="submit" value="Volgende">
+        <input type="button"  onclick="location.href='login/startup.php';"  name="submit" value="Continue">
   </div>
 
   

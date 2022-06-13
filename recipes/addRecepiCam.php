@@ -92,7 +92,7 @@ session_start();
 		function configure(){
 			$(".retake").css("display", "none");
 			$('#results').find('#imageprev').remove();
-			$('#results').append('<div id="my_camera">hello</div>'); 
+			$('#results').append('<div id="my_camera"></div>'); 
 			Webcam.set({
 				width: 320,
 				height: 240,

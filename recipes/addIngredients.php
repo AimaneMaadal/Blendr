@@ -156,8 +156,8 @@ form {
     cursor: pointer;
     margin-top: 13px;
     font-weight: 600;
-    position: fixed;
-    top: 815px;
+    position: absolute;
+    bottom: 25px;
     margin: 0 auto;
 }
     </style>
@@ -258,11 +258,11 @@ form {
             });
             $(document).on('click', '.uploadTags', function(e){
                 if (z == "") {
-                    alert("nope");  
+                    // alert("nope");  
                 }
                 else{
                     const myJSON = JSON.stringify(z);
-                    alert(myJSON);
+                    // alert(myJSON);
                     $.ajax({
                         url: "ajax/add_ingredients.php",
                         type: "POST",
@@ -275,7 +275,7 @@ form {
                             window.location.href = "addRecepi.php?recepiId=<?php echo $_GET["id"]; ?>";
                         }
                     });
-                    alert(z);
+                    // alert(z);
                 }
             });
 

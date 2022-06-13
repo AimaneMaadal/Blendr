@@ -102,7 +102,7 @@
           <input type="button" onclick="loadDoc()" name="submit" value="Volgende">
         </div>
       </form>
-      <div class="link">Heb je al een account? <a href="index.php">log in!</a></div>
+      <div class="link">Already signed up? <a href="index.php">Login here!</a></div>
     </section>
   </div>
 

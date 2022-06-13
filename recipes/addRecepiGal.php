@@ -127,7 +127,7 @@ session_start();
    
     <form action="" method="POST" enctype="multipart/form-data">
     <div class="topHeader">
-        <div><i class="fa-solid fa-chevron-left fa-lg">&nbsp&nbsp&nbsp&nbsp&nbsp</i><b>Galerij</b> <i class="fa-solid fa-chevron-down"></i></div>
+        <div><i class="fa-solid fa-chevron-left fa-lg">&nbsp&nbsp&nbsp&nbsp&nbsp</i><b>Gallery</b> <i class="fa-solid fa-chevron-down"></i></div>
         <div><label><i class="fa-solid fa-arrow-right fa-lg" style="color: #F0A500;"></i><input type="button" id="uploadImageDone" name="submit" value="Volgende" style="display: none;"></label></div>
     </div>  
         <div class="food">
@@ -152,7 +152,7 @@ session_start();
         </div>
         
         <div class="fileChoice">
-            <a href="addRecepiGal.php" style="font-weight: 700;color: #FF7A00;">Galery</a>
+            <a href="addRecepiGal.php" style="font-weight: 700;color: #FF7A00;">Gallery</a>
             <a href="addRecepiCam.php">Camera</a>
         </div>
         <div class="activeChoice"></div>
@@ -184,11 +184,11 @@ $(document).on("click","#uploadImage",function(){
 
 $(document).on("click","#uploadImageDone",function(){
     if (z == "") {
-        alert("cant be empty");  
+        // alert("cant be empty");  
     }
     else{
         const myJSON = JSON.stringify(z);
-        alert(myJSON);
+        // alert(myJSON);
         $.ajax({
             url: "ajax/add_images.php",
             type: "POST",

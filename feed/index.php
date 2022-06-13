@@ -282,7 +282,7 @@
   <a href="#"><i class="fa-solid fa-tag"></i>Offer and promo</a>
   <a href="#"><i class="fas fa-shield-alt"></i>Privacy policy</a>
 
-  <a href="../php/logout.php?logout_id=<?php echo $_SESSION['unique_id'] ?>">Uitloggen<i class="fa-solid fa-arrow-right"></i></a>
+  <a href="../php/logout.php?logout_id=<?php echo $_SESSION['unique_id'] ?>">Sign out<i class="fa-solid fa-arrow-right"></i></a>
   
 </div>
 
