@@ -130,7 +130,7 @@ $user = user::getUserbyId($_SESSION['unique_id']);
         <a href="addRecepiGal.php" style="margin: 0px auto;display: block;width: 20%;"><img src="../php/icons/add.svg" class="addBtn"></a>
         <div class="bottomNav">
           <div><a href="../feed/index.php"><img src="../php/icons/home.svg"></div>
-          <div><img src="../php/icons/Recepeten_fill.svg"></div>
+          <div><img src="../php/icons/recepeten_fill.svg"></div>
           <div><a href="../match/index.php"><img src="../php/icons/match.svg"></a></div>
           <div><a href="../users.php"><img src="../php/icons/chat.svg"></a></div>
         </div>

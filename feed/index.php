@@ -194,7 +194,7 @@
 
             <div class="bottomNav">
                 <div><img src="../php/icons/home_fill.svg"></div>
-                <div><a href="../recipes/index.php"><img src="../php/icons/Recepeten.svg"></a></div>
+                <div><a href="../recipes/index.php"><img src="../php/icons/recepeten.svg"></a></div>
                 <div><a href="../match/index.php"><img src="../php/icons/match.svg"></a></div>
                 <div><a href="../users.php"><img src="../php/icons/chat.svg"></a></div>
             </div>

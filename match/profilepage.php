@@ -339,7 +339,7 @@ function getEmoji($emoji){
 
 <div class="bottomNav">
       <div><img src="../php/icons/home.svg"></div>
-      <div><img src="../php/icons/Recepeten.svg"></div>
+      <div><img src="../php/icons/recepeten.svg"></div>
       <div><img src="../php/icons/match_fill.svg"></div>
       <div><img src="../php/icons/chat.svg"></div>
   </div>

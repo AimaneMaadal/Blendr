@@ -2,7 +2,7 @@
   session_start();
   include_once "../classes/user.php";
   if(!isset($_SESSION['unique_id'])){
-    header("location: http://localhost/blendr2.0/match.php");
+     header("location: ../../../login/index.php");
   }
   
   $data = User::getAllUsersMatch($_SESSION['unique_id']);
@@ -284,7 +284,7 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
 
 <div class="bottomNav">
     <div><a href="../feed/index.php"><img src="../php/icons/home.svg"></a></div>
-    <div><a href="../recipes/index.php"><img src="../php/icons/Recepeten.svg"></a></div>
+    <div><a href="../recipes/index.php"><img src="../php/icons/recepeten.svg"></a></div>
     <div><img src="../php/icons/match_fill.svg"></div>
     <div><a href="../users.php"><img src="../php/icons/chat.svg"></a></div>
 </div>
