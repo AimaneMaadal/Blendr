@@ -16,9 +16,6 @@
     .wrapper{
         background-color: #f2f2f2;
     }
-    .form{
-  
-    }
     .header{
         font-weight: bold;
     }
@@ -44,6 +41,8 @@
         background-color: white;
         border-radius: 20px;
         box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+        margin-bottom: 30px;
+     
     }
     .userImg{
         width: 50px;
@@ -52,7 +51,32 @@
         margin-right: 15px;
     }
     .underline{
-        border-bottom: 1px solid black;
+        border-bottom: 1px solid rgb(0, 31, 59, 0.5);
+        
+    }
+    .userInfo h5{
+        padding: 10px 0px;
+        color: rgb(0, 31, 59, 0.5);
+        font-weight: 600;
+    }
+    .extra{
+        padding: 15px;
+    
+    display: flex;
+  
+    overflow: hidden;
+    margin-top: 15px;
+    background-color: white;
+    border-radius: 20px;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.1);
+    justify-content: space-between;
+    /* center */
+    align-items: center;
+    font-weight: bold;
+    padding-left: 20px;
+    }
+    .edit{
+        color: #FF7A00;
     }
   </style>
 </head>
@@ -67,7 +91,7 @@
     <div class="container">
         <div class="userDataHeader">
         <h6>Persoonlijke gegevens</h6>
-        <a href="edit/index.php">     <h6>Bewerken</h6></a>
+        <a href="edit/index.php">     <h6  class="edit">Bewerken</h6></a>
         </div>
         <div class="userData">
            <div class="imgBox">
@@ -82,7 +106,7 @@
          <h3><?php echo $user[0]["fname"]." ".$user[0]["lname"];?></h3>
          <h5 class="underline"><?php echo $user[0]["email"];?></h5>
          <h5 class="underline"><?php 
-         //get geo from user and explode it into lat and long
+            //get geo from user and explode it into lat and long
             $geo = explode(",", $user[0]["geo"]);
             $lat = $geo[0];
             $long = $geo[1];
@@ -95,8 +119,35 @@
 
 
          ?></h5>
+         <h5>
+            <?php 
+            //print user bio
+            echo $user[0]["bio"];
+            ?>
+         </h5>
          </div>
+  
         </div>
+        <div class="extra">
+            <!-- print a link and awesome icon right arrow -->
+            <a href="php/logout.php">Matches geschiedenis</a>
+            <i class="fas fa-arrow-right"></i>
+         </div>
+         <div class="extra">
+            <!-- print a link and awesome icon right arrow -->
+            <a href="php/logout.php">Betaalmethodes</a>
+            <i class="fas fa-arrow-right"></i>
+         </div>
+         <div class="extra">
+            <!-- print a link and awesome icon right arrow -->
+            <a href="php/logout.php">Faq</a>
+            <i class="fas fa-arrow-right"></i>
+         </div>
+         <div class="extra">
+            <!-- print a link and awesome icon right arrow -->
+            <a href="php/logout.php">Help</a>
+            <i class="fas fa-arrow-right"></i>
+         </div>
     </div>
   
     </section>

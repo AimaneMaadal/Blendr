@@ -288,8 +288,8 @@
 
     <div class="feed">
         <div class="topHeader">
-            <img src="../php/icons/vector.svg" onclick="openNav()" alt="logo" class="menuVector">
-            <?php echo'<img class="profilePic" id="profilePicture" data-id="'.$_SESSION["unique_id"].'" src="../php/images/' .$user[0]["img"]. '" alt="">'; ?>
+           <img src="../php/icons/vector.svg" onclick="openNav()" alt="logo" class="menuVector">
+            <?php echo' <a href="../profile.php"><img class="profilePic" id="profilePicture" data-id="'.$_SESSION["unique_id"].'" src="../php/images/' .$user[0]["img"]. '" alt=""></a>'; ?>
         </div>  
             <?php
             
