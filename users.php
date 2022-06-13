@@ -170,7 +170,7 @@
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <div class="sidenav_logo"><img src="./php/images/assets/logo2.png"></div>
-  <a href="#"><i class="fa-regular fa-circle-user"></i>Profile</a>
+  <a href="./profile.php"><i class="fa-regular fa-circle-user"></i>Profile</a>
   <a href="#"><i class="fa-regular fa-handshake"></i>Matches</a>
   <a href="#"><i class="fa-solid fa-tag"></i>Offer and promo</a>
   <a href="#"><i class="fas fa-shield-alt"></i>Privacy policy</a>
@@ -183,7 +183,7 @@
 
   <div class="topHeader">
             <img src="php/icons/vector.svg" onclick="openNav()" alt="logo" class="menuVector">
-            <?php echo'<img class="profilePic" id="profilePicture" data-id="'.$_SESSION["unique_id"].'" src="php/images/' .$user[0]["img"]. '" alt="">'; ?>
+            <?php echo'<a href="./profile.php"><img class="profilePic" id="profilePicture" data-id="'.$_SESSION["unique_id"].'" src="php/images/' .$user[0]["img"]. '" alt=""></a>'; ?>
         </div>  
     <section class="users">
         <div class="content">

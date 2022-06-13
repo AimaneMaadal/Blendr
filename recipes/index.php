@@ -86,7 +86,7 @@ $user = user::getUserbyId($_SESSION['unique_id']);
 
       <div class="topHeader">
             <img src="../php/icons/slogan.svg" alt="logo" class="menuVector">
-            <?php echo'<img class="profilePic" id="profilePicture" data-id="'.$_SESSION["unique_id"].'" src="../php/images/' .$user[0]["img"]. '" alt="">'; ?>
+            <?php echo'<a href="../profile.php"><img class="profilePic" id="profilePicture" data-id="'.$_SESSION["unique_id"].'" src="../php/images/' .$user[0]["img"]. '" alt=""></a>'; ?>
         </div>
         <div class="filter">
           <input type="text" id="search" placeholder="Search">

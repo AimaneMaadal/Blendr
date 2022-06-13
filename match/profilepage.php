@@ -338,10 +338,10 @@ function getEmoji($emoji){
 </div>
 
 <div class="bottomNav">
-      <div><img src="../php/icons/home.svg"></div>
-      <div><img src="../php/icons/recepeten.svg"></div>
-      <div><img src="../php/icons/match_fill.svg"></div>
-      <div><img src="../php/icons/chat.svg"></div>
+      <div><a href="../feed/index.php"><img src="../php/icons/home.svg"></a></div>
+      <div><a href="../recipes/index.php"><img src="../php/icons/recepeten.svg"></a></div>
+      <div><a href="../match/index.php"><img src="../php/icons/match_fill.svg"></a></div>
+      <div><a href="../users.php"><img src="../php/icons/chat.svg"></a></div>
   </div>
 
 

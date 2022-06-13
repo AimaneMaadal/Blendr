@@ -64,8 +64,9 @@ session_start();
 
 <div class="wrapper">
 <div class="topHeader">
+	<a href="../feed/index.php">
         <div><i class="fa-solid fa-chevron-left fa-lg">&nbsp&nbsp&nbsp&nbsp&nbsp</i><b>Camera</b> </div>
-        <div><label><i class="fa-solid fa-arrow-right fa-lg" style="color: #F0A500;"></i><input type=button value="Save Snapshot" onClick="saveSnap()" style="display: none;"></label></div>
+        </a>
     </div>  
 	
 	<div id="results">
