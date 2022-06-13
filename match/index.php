@@ -121,9 +121,9 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
             margin-bottom: 70px;
         }
         .bottomNav{
-    position: fixed;
+    position: absolute;
     background-color: rgb(255, 255, 255);
-    bottom: 80px;
+    bottom: 25px;
     width: 330px;
     height: 50px;
     border-radius: 10px;
@@ -210,6 +210,8 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
     transition: 0.2s ease-out;
     background-color: #f2f2f2;
     overflow: hidden;
+    height: 100%;
+    padding-bottom: 40%;
 }
 .sidenav_logo{
     font-family: "Source Sans Pro";
@@ -219,6 +221,7 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
     margin-left: 35px;
     margin-bottom: 45px;
     align-items: center;
+
 }
 .wrapper{
     overflow:hidden;
@@ -298,7 +301,7 @@ function openNav() {
   document.getElementById("mySidenav").style.width = "100%";
   document.getElementById("mySidenav").style.overflow = "hidden";
   document.getElementById("mySidenav").style.opacity = "1";
-  document.querySelector(".bottomNav").style.bottom = "0px";
+
   document.querySelector(".bottomNav").style.marginBottom = "0px";
   container.style.transform = "scale(0.55)";
   container.style.position = "relative";
@@ -321,7 +324,7 @@ function closeNav() {
     document.getElementById("mySidenav").style.width = "0";
     document.getElementById("mySidenav").style.overflow = "hidden";
     document.getElementById("mySidenav").style.opacity = "0";
-    document.querySelector(".bottomNav").style.bottom = "80px";
+
     document.querySelector(".bottomNav").style.marginBottom = "0px";
     container.style.transform = "scale(1)";
     container.style.position = "relative";
@@ -329,7 +332,7 @@ function closeNav() {
     container.style.zIndex = "0";
     container.style.backgroundColor = "white";
     container.style.pointerEvents = "all";
-    container.style.paddingBottom = "0px";
+    container.style.paddingBottom = "45%";
     container.style.borderRadius = "0px";
     container.style.boxShadow = "none";
     container.onclick = "";
