@@ -32,7 +32,6 @@ if(isset($_POST["firstName"]) && isset($_POST["lastName"]) && isset($_POST["bio"
         }
         //close connection
         $conn->close();
-
     }
     else{
         //return user to previous page
