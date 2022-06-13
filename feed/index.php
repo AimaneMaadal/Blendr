@@ -92,7 +92,7 @@
             display: flex;
             /* text-align: center; */
             flex-direction: column;
-            gap: 40px;
+            
         }
         .sidenav .closebtn {
             position: absolute;
@@ -107,6 +107,167 @@
             color: white;
             font-weight: 600;
         }
+        .bottomNav {
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    bottom: 25px;
+    left: 25px;
+    width: 330px;
+    height: 50px;
+    border-radius: 10px;
+    z-index: 5;
+    box-shadow: 0px 0px 10px 0px rgb(0 0 0 / 50%);
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+}
+.bottomNav div{
+    width: 25px;
+    height: 25px;
+}
+.bottomNav div img{
+    width: 25px;
+    height: 25px;
+}
+.sidenav {
+  height: 907px;
+  width: 0;
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  background-color: #FF7A00;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+  display: flex;
+  /* text-align: center; */
+  flex-direction: column;
+  
+}
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+  color: white;
+}
+.sidenav a {
+  margin-left: 50px;
+  color: white;
+  font-weight: 600;
+}
+.feed{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+ 
+  height: 100%;
+  padding-top: 60px;
+  background-color: #f2f2f2;
+  width: 100%;
+  padding-left: 15%;
+  padding-right:15%;
+
+}
+.wrapper{
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+
+}
+.topHeader, .users, .search{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+.sidenav {
+    height: 907px;
+    width: 0;
+    position: absolute;
+    z-index: 0;
+    top: 0;
+    left: 0;
+    background-color: #FF7A00;
+    opacity: 0;
+    transition: 0.5s;
+    padding-top: 60px;
+ 
+    display: flex;
+    /* text-align: center; */
+    flex-direction: column;
+    
+    visibility: hidden;
+    
+    white-space: nowrap;
+    
+}
+.sidenav .closebtn {
+    position: absolute;
+    top: 175px;
+    right: 0;
+    font-size: 36px;
+    margin-left: 50px;
+    color: white;
+    background-color: #f2f2f2;
+    width: 40%;
+    height: 500px;
+    opacity: 0;
+
+}
+.sidenav a {
+    margin-left: 70px;
+    color: white;
+    font-weight: 600;
+    font-size: 20px;
+    border-bottom: 1px solid rgb(255, 255, 255, 0.3);
+    width: 35%;
+    padding: 25px 0px;
+   
+    display: inline-block;
+}
+.sidenav a i{
+    margin-right: 10px;
+    margin-left: -30px;
+    color: white;
+
+
+}
+.sidenav a:last-child{
+    border-bottom: none;
+    margin-top: 200px;
+    margin-left: 35px;
+    align-items: center;
+}
+.sidenav a:last-child i{
+
+    margin-left: 10px;
+    color: white;
+
+}
+.sidenav_logo{
+    font-family: "Source Sans Pro";
+    font-weight: bolder;
+    font-size: 30px;
+    color: white;
+    margin-left: 35px;
+    margin-bottom: 45px;
+    align-items: center;
+
+}
+.post{
+   width: 100%;
+}
+.post .postImg{
+    width: 100%;
+    height: auto;
+}
+.menu{
+    opacity: 1;
+    visibility: visible;
+}
 
     </style>
 <body>
@@ -114,11 +275,14 @@
     
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-  <a href="#">Profile</a>
-  <a href="#">Matches</a>
-  <a href="#">offer and promo</a>
-  <a href="#">Privacy policy</a>
-  <a href="../php/logout.php?logout_id=<?php echo $_SESSION['unique_id'] ?>">Uitloggen</a>
+  <div class="sidenav_logo"><img src="../php/images/assets/logo2.png"></div>
+  <a href="#"><i class="fa-regular fa-circle-user"></i>Profile</a>
+  <a href="#"><i class="fa-regular fa-handshake"></i>Matches</a>
+  <a href="#"><i class="fa-solid fa-tag"></i>Offer and promo</a>
+  <a href="#"><i class="fas fa-shield-alt"></i>Privacy policy</a>
+
+  <a href="../php/logout.php?logout_id=<?php echo $_SESSION['unique_id'] ?>">Uitloggen<i class="fa-solid fa-arrow-right"></i></a>
+  
 </div>
 
     <div class="feed">
@@ -238,11 +402,59 @@ $(document).on("click","#likeButton",function(){
  });
 
  function openNav() {
+  let container =  document.querySelector(".feed");
+  document.getElementById("mySidenav").style.visibility = "visible";
   document.getElementById("mySidenav").style.width = "100%";
+  document.getElementById("mySidenav").style.overflow = "hidden";
+  document.getElementById("mySidenav").style.opacity = "1";
+  document.querySelector(".bottomNav").style.marginBottom = "0px";
+  container.style.transform = "scale(0.55)";
+  document.querySelector(".bottomNav").style.transform = "scale(0.55)";
+  container.style.position = "relative";
+  document.querySelector(".bottomNav").style.position = "relative";
+  container.style.left = "165px";
+  document.querySelector(".bottomNav").style.left = "165px";
+  document.querySelector(".bottomNav").style.bottom = "230px";
+  container.style.zIndex = "200";
+  document.querySelector(".bottomNav").style.zIndex = "200";
+  document.querySelector(".menu").style.opacity = 0;
+  document.querySelector(".menu").style.visibility = "hidden";
+  container.style.backgroundColor = "#F2F2F2";
+  container.style.pointerEvents = "none"; 
+  container.style.paddingBottom = "120px";
+  container.style.borderRadius = "25px";
+  container.style.boxShadow = "-35px 35px rgb(255,255,255,0.36)";
+  
 }
 
 function closeNav() {
-  document.getElementById("mySidenav").style.width = "0";
+    // revert back to normal
+    let container =  document.querySelector(".feed");
+    document.getElementById("mySidenav").style.visibility = "hidden";
+    document.getElementById("mySidenav").style.width = "0";
+    document.getElementById("mySidenav").style.overflow = "hidden";
+    document.getElementById("mySidenav").style.opacity = "0";
+
+    document.querySelector(".bottomNav").style.marginBottom = "0px";
+    container.style.transform = "scale(1)";
+    document.querySelector(".bottomNav").style.transform = "scale(1)";
+    container.style.position = "relative";
+    document.querySelector(".bottomNav").style.position = "absolute";
+    container.style.left = "0px";
+    document.querySelector(".bottomNav").style.left = "25px";
+    document.querySelector(".bottomNav").style.bottom = "25px";
+    container.style.zIndex = "0";
+    document.querySelector(".bottomNav").style.zIndex = "0";
+    document.querySelector(".menu").style.opacity = 1;
+  document.querySelector(".menu").style.visibility = "visible";
+    container.style.backgroundColor = "white";
+
+    container.style.pointerEvents = "all";
+    container.style.paddingBottom = "45%";
+    container.style.borderRadius = "0px";
+    container.style.boxShadow = "none";
+    container.onclick = "";
+    container.style.cursor = "default";
 }
 
 </script>
