@@ -2,7 +2,7 @@
   session_start();
   include_once "php/config.php";
   if(!isset($_SESSION['unique_id'])){
-    header("location: login.php");
+    header("location: login/index.php");
   }
   include_once "classes/user.php";
   
@@ -14,9 +14,9 @@
   <style>
 
 .bottomNav {
-    position: fixed;
+    position: absolute;
     background-color: rgb(255, 255, 255);
-    bottom: 80px;
+    bottom: 25px;
     width: 330px;
     height: 50px;
     border-radius: 10px;
@@ -63,11 +63,31 @@
   color: white;
   font-weight: 600;
 }
+.container{
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 100px;
+  height: 100%;
+  margin-top: 60px;
+
+}
+.wrapper{
+  padding: 0;
+
+}
+.topHeader, .users, .search{
+  padding: 0;
+  margin: 0;
+  width: 100%;
+}
+
   </style>
 </head>
 <body>
-  <div class="wrapper">
-        
+<div class="wrapper">
+<div class="container">
 <div id="mySidenav" class="sidenav">
   <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
   <a href="#">Profile</a>
@@ -76,6 +96,7 @@
   <a href="#">Privacy policy</a>
   <a href="../php/logout.php?logout_id=<?php echo $_SESSION['unique_id'] ?>">Uitloggen</a>
 </div>
+
   <div class="topHeader">
             <img src="php/icons/vector.svg" onclick="openNav()" alt="logo" class="menuVector">
             <?php echo'<img class="profilePic" id="profilePicture" data-id="'.$_SESSION["unique_id"].'" src="php/images/' .$user[0]["img"]. '" alt="">'; ?>
@@ -106,11 +127,14 @@
           <div><a href="users.php"><img src="php/icons/chat_fill.svg"></a></div>
         </div>
   </div>
+  </div>
+
 
   <script src="javascript/users.js"></script>
   <script>
 function openNav() {
   document.getElementById("mySidenav").style.width = "100%";
+  
 }
 
 function closeNav() {
