@@ -130,22 +130,22 @@
         </div>
         <div class="extra">
             <!-- print a link and awesome icon right arrow -->
-            <a href="php/logout.php">Matches geschiedenis</a>
+            <a href="#">Matches geschiedenis</a>
             <i class="fas fa-arrow-right"></i>
          </div>
          <div class="extra">
             <!-- print a link and awesome icon right arrow -->
-            <a href="php/logout.php">Betaalmethodes</a>
+            <a href="#">Betaalmethodes</a>
             <i class="fas fa-arrow-right"></i>
          </div>
          <div class="extra">
             <!-- print a link and awesome icon right arrow -->
-            <a href="php/logout.php">Faq</a>
+            <a href="#">Faq</a>
             <i class="fas fa-arrow-right"></i>
          </div>
          <div class="extra">
             <!-- print a link and awesome icon right arrow -->
-            <a href="php/logout.php">Help</a>
+            <a href="#">Help</a>
             <i class="fas fa-arrow-right"></i>
          </div>
     </div>

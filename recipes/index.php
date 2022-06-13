@@ -72,7 +72,11 @@ $user = user::getUserbyId($_SESSION['unique_id']);
     .wrapper{
       align-items: normal;
     }
-    
+    .bottomNav{
+      position: absolute;
+      bottom: 25px;
+      left: 25px;
+    }
    </style> 
 </head>
 
