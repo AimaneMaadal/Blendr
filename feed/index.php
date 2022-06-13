@@ -258,7 +258,8 @@
 
 }
 .post{
-   width: 100%;
+   width: 120%;
+   margin-left: -10%;
 }
 .post .postImg{
     width: 100%;
