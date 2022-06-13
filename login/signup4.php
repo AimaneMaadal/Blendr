@@ -118,7 +118,7 @@ session_start();
     <form action="" method="POST" enctype="multipart/form-data">
     <br><h1>Fotos uploaden</h1>
     <img src="../php/icons/step4.svg" style="width: 100%;margin: 20px 0px 20px 0px;">  
-    <p>Kies fotos van jou gerechten die andere op je profiel pagina kunne bekijken</p>
+    <p>Choose photos of your dishes that others can view on your profile page</p>
         <div class="food">
             <input type="button" data-id="food1.jpg" id="uploadImage" class="image1"></input>
             <input type="button" data-id="food2.jpg" id="uploadImage" class="image1"></input>
@@ -130,7 +130,7 @@ session_start();
             <input type="button" data-id="food8.jpg" id="uploadImage" class="image1"></input>
             <input type="button" data-id="food9.jpg" id="uploadImage" class="image1"></input>
             <input type="button" data-id="food10.jpg" id="uploadImage" class="image1"></input>
-            <input type="button" id="uploadImageDone" name="submit" value="Volgende">
+            <input type="button" id="uploadImageDone" name="submit" value="Continue">
             <img src="../php/icons/or.svg" style="width: 93%;margin: 22px -11px 22px 8px;"> 
             <input type="button" id="skipImage" name="submit" value="Skip"> 
         </div>

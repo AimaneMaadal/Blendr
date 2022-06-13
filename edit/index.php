@@ -87,7 +87,7 @@
 
     <section class="form">
     <div class="header">
-        <a href="../feed/index.php">    <i class="fas fa-arrow-left"></i> &nbsp; &nbsp;&nbsp; Profiel aanpassen</a>
+        <a href="../feed/index.php">    <i class="fas fa-arrow-left"></i> &nbsp; &nbsp;&nbsp; Edit profile</a>
     </div>
     <div class="container">
     <form action="../edit/updateProfile.php" method="post">

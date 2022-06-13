@@ -86,12 +86,12 @@
 
     <section class="form">
     <div class="header">
-        <a href="feed/index.php">    <i class="fas fa-arrow-left"></i> &nbsp; &nbsp;&nbsp; Profiel</a>
+        <a href="feed/index.php">    <i class="fas fa-arrow-left"></i> &nbsp; &nbsp;&nbsp; Profile</a>
     </div>
     <div class="container">
         <div class="userDataHeader">
-        <h6>Persoonlijke gegevens</h6>
-        <a href="edit/index.php">     <h6  class="edit">Bewerken</h6></a>
+        <h6>Personal data</h6>
+        <a href="edit/index.php">     <h6  class="edit">Edit Profile</h6></a>
         </div>
         <div class="userData">
            <div class="imgBox">
@@ -130,12 +130,12 @@
         </div>
         <div class="extra">
             <!-- print a link and awesome icon right arrow -->
-            <a href="#">Matches geschiedenis</a>
+            <a href="#">Matches history</a>
             <i class="fas fa-arrow-right"></i>
          </div>
          <div class="extra">
             <!-- print a link and awesome icon right arrow -->
-            <a href="#">Betaalmethodes</a>
+            <a href="#">Payment methods</a>
             <i class="fas fa-arrow-right"></i>
          </div>
          <div class="extra">

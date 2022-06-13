@@ -99,7 +99,7 @@
         ?>
         
           <div class="field button">
-          <input type="button" onclick="loadDoc()" name="submit" value="Volgende">
+          <input type="button" onclick="loadDoc()" name="submit" value="Continue">
         </div>
       </form>
       <div class="link">Already signed up? <a href="index.php">Login here!</a></div>

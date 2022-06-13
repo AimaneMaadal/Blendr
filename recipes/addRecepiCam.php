@@ -71,7 +71,7 @@ session_start();
 	<div id="results">
 		
 	</div>	
-	<input type=button value="Opnieuw" onClick="configure()" class="retake">
+	<input type=button value="Retake" onClick="configure()" class="retake">
 	<label><img style="margin-top: 100px;" src="../php/icons/camera.svg"><input style="display: none;" type=button value="Take Snapshot" onClick="take_snapshot()"></label>
 	
 	<div class="fileChoice">

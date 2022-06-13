@@ -197,7 +197,7 @@ form {
         }
         
     ?>   
-     <br><input type="button" href="javascript:void(0);" value="volgende" class="uploadTags" title="Add field"/>
+     <br><input type="button" href="javascript:void(0);" value="Continue" class="uploadTags" title="Add field"/>
 </div>
         
 

@@ -142,8 +142,8 @@
 <body>
   <div class="wrapper">
     <section class="form signup">
-      <h1>Recept toevoegen</h1>
-      <p>Maak een account zodat je kunt matchen met mensen van verschillende culturen en dezelfde intresses.</p>
+      <h1>Add recipe</h1>
+      <p>Create an account so you can match with people of different cultures and the same interests.</p>
       <form method="POST" enctype="multipart/form-data" autocomplete="off">
         <div class="field image">
           <label>
@@ -153,26 +153,26 @@
         </div>
         <div class="name-details">
           <div class="field input">
-            <input type="text" name="receptnaam" value="<?php if($recipeName != "NULL"){ echo $recipeName; } ?>" placeholder="Recept naam" required>
+            <input type="text" name="receptnaam" value="<?php if($recipeName != "NULL"){ echo $recipeName; } ?>" placeholder="Recipe name" required>
           </div>
           <div class="field input">
-            <input type="text" name="origine" value="<?php if($recipeOrigin != "NULL"){ echo $recipeOrigin; } ?>" placeholder="Recept origine" required>
+            <input type="text" name="origine" value="<?php if($recipeOrigin != "NULL"){ echo $recipeOrigin; } ?>" placeholder="Recipe origin" required>
           </div>
         </div>
         <div class="field input">
-          <textarea name="beschrijving" placeholder="Beschrijving" required><?php if($recipeDescription != "NULL"){ echo $recipeDescription; } ?></textarea>
+          <textarea name="beschrijving" placeholder="Description" required><?php if($recipeDescription != "NULL"){ echo $recipeDescription; } ?></textarea>
         </div>
         <div class="name-details">
           <div class="field input">
             <input type="time" name="tijd" value="<?php echo $recipe["duration"] ?>" placeholder="Recept naam" required>
           </div>
           <div class="field input">
-            <input type="text" name="calorieën" value="<?php if($recipeCalories != "NULL"){ echo $recipeCalories; } ?>" placeholder="Calorieeën" style="width: 120%;"required>
+            <input type="text" name="calorieën" value="<?php if($recipeCalories != "NULL"){ echo $recipeCalories; } ?>" placeholder="Calories" style="width: 120%;" required>
           </div>
         </div>
           <div class="select_input">
             <a href="addIngredients.php?id=<?php echo $recepiId?>">
-              <div>Ingredienten</div>
+              <div>Ingredients</div>
               <div><p style="font-size: 10px;color: grey;"><?php  echo $ingredientsShow ?><i class="fa-solid fa-chevron-right"></i></p></div>
             </a>
           </div>
@@ -182,7 +182,7 @@
               <div><i class="fa-solid fa-chevron-right"></i></div>
             </a>
           </div>
-        <button class="submitBtn" type="submit">Add Recepi</button>
+        <button class="submitBtn" type="submit">Add Recipe</button>
       </form>
     </section>
   </div>

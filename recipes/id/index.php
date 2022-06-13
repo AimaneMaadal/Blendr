@@ -64,7 +64,7 @@ if (isset($_SESSION['unique_id'])) {
                         if ($recipe['duration'] < 120 && $recipe['duration'] > 10) {
                             echo  ' <i class="fa-solid fa-fire-burner"></i> &nbsp;  '.$recipe['duration'] . " min";
                         } else {
-                            echo ' <i class="fa-solid fa-fire-burner"></i> &nbsp;  '.$recipe['duration'] . " uur";
+                            echo ' <i class="fa-solid fa-fire-burner"></i> &nbsp;  '.$recipe['duration'] . " h";
                         }
                         ?>
                     </div>
@@ -103,12 +103,12 @@ if (isset($_SESSION['unique_id'])) {
                 </div>
 
                 <div class="maker">
-                    <?php echo "Recept maker: " . $userFname; ?>
+                    <?php echo "Recipe maker: " . $userFname; ?>
                 </div>
                 <div class="description">
                     <?php echo $recipe['description']; ?>
                 </div>
-                <div class="subtitle">     <h5>Ingrediënten</h5></div>
+                <div class="subtitle">     <h5>Ingredients</h5></div>
                 <div class="ingredienten">
                 
 

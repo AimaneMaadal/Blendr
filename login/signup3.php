@@ -98,7 +98,7 @@ if (isset($_POST['uploadAbout'])) {
        
 
         
-        <input type="submit" name="uploadAbout" value="volgende" class="uploadAbout" />
+        <input type="submit" name="uploadAbout" value="Continue" class="uploadAbout" />
         
     </form>
     
