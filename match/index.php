@@ -247,7 +247,7 @@ function distance($lat1, $lon1, $lat2, $lon2, $unit) {
 <div class="content">   <!-- <a href="php/logout.php?logout_id=<?php echo $_SESSION['unique_id'] ?>" class="logout">Logout</a> -->
 </header>
 
-        <div class="pop_up"><div><i class="fa-solid fa-crown fa-2xl" style="width:100%"></i></div><h3>Upgrade naar premium</h3><p>Ontmoet nieuwe mensen</p><i class="fa-solid fa-xmark fa-xl"></i></div>
+        <div class="pop_up"><div><i class="fa-solid fa-crown fa-2xl" style="width:100%"></i></div><h3>Upgrade to premium</h3><p>Meet new people</p><i class="fa-solid fa-xmark fa-xl"></i></div>
     <div id="stacked-cards-block" class="stackedcards stackedcards--animatable init" onClick="redirect()">
   <div class="stackedcards-container">
     <?php foreach($data as $row){ 

@@ -2,7 +2,7 @@
   session_start();
   include_once "../classes/user.php";
   if(!isset($_SESSION['unique_id'])){
-    header("location: http://localhost/blendr2.0/match.php");
+    header("location: http://localhost/Blendr/match.php");
   }
   
 $users = user::getAllMatch($_SESSION['unique_id']);
@@ -43,8 +43,12 @@ if(isset($_POST['submit'])){
 
 <?php 
 
+//get id of other user
+$id = $_GET['id'];
 
-$otherUser = user::getuserById($users[0][2]);
+  $otherUser = user::getUserById($user['other_user_id']);
+
+ 
 $User = user::getuserById($_SESSION['unique_id']);
 
 var_dump($otherUser);
